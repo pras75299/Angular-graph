@@ -507,7 +507,7 @@ export class CabRequestsComponent implements OnInit {
       {name: 'Option 2', code: ''}
     ]
     this.addedLocation=[
-      {location:'Sez, HCL Technologies, Sector-126, NOIDA'},
+      {location:'Sez, Noida, Sector-126, NOIDA'},
       {location:'A- 8 & 9, Maharaja Agrasen Marg, Block- A, Sector-60, NOIDA'},
     ]
     this.DropupCity = [
@@ -1014,10 +1014,10 @@ export class CabRequestsComponent implements OnInit {
     this.addedCopassanger.splice(index, 1);
   }
 
-  private newLocation: any = {location:'Sez, HCL Technologies, Sector-126, NOIDA'};
+  private newLocation: any = {location:'Sez, Noida, Sector-126, NOIDA'};
   addnLocation() {
       this.addedLocation.push(this.newLocation)
-      this.newLocation ={location:'Sez, HCL Technologies, Sector-126, NOIDA'};
+      this.newLocation ={location:'Sez, Noida, Sector-126, NOIDA'};
   }
 
   removeLocation(index) {
