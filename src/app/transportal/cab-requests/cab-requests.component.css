@@ -593,7 +593,7 @@ section.lifeInsurance-disability.benefitAdministrator{
 
 
 .progressDetails ul li.active .imageSecProgressLi .iconCheckCommon{
-    background: #73CC07;
+    background: #1eb20c;
     color: #fff;
 }
 
@@ -812,7 +812,7 @@ span.float-right span i.app-Arrow{
     display: none;
 }
 .requestRightCard .buttonBook.bookedButton{
-    background-color: #73CC07;    
+    background-color: #1eb20c;    
     color: #fff;
     padding: 0px;
 }
