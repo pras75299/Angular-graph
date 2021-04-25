@@ -1,0 +1,1340 @@
+.tabRight{float:right}
+.tabLegend, .tabIcon{display:inline-block}
+.tabLegend > p {display:inline-block;padding-right:10px}
+.tabIcon {border-left:1px solid #D6D6D6;padding-left:10px}
+.tabIcon li {display:inline-block;padding-right:10px;font-size:19px;color:#777;vertical-align:middle;cursor:pointer}
+.tabIcon li:hover{color:#1ec00b}
+.tabIcon li:last-child{padding-right:0}
+
+
+/* Tab */
+::ng-deep body .ui-tabview .ui-tabview-panels{border:0;padding:0;background:none;}
+
+::ng-deep body .ui-tabview.ui-tabview-top .ui-tabview-nav{margin-top: 0px;}
+
+::ng-deep body .ui-tabview{padding:0}
+
+::ng-deep body .ui-tabview.ui-tabview-top .ui-tabview-nav li{outline:0 !important}
+
+
+/* ::ng-deep body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active::after, 
+::ng-deep body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li.ui-state-active::after, 
+::ng-deep body .ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-active::after, 
+::ng-deep body .ui-tabview.ui-tabview-right .ui-tabview-nav li.ui-state-active::after{
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 3px;
+    background-color: #1ec00b;
+    bottom: 10px;
+    left: 0px;
+}
+::ng-deep body .ui-tabview.ui-tabview-top .ui-tabview-nav li, 
+::ng-deep body .ui-tabview.ui-tabview-top .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover
+{position: relative;
+}
+
+::ng-deep body .ui-tabview.ui-tabview-top .ui-tabview-nav li::after, 
+::ng-deep body .ui-tabview.ui-tabview-top .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled)::after
+{width: 100px;
+transition: width ease-in 0.4s;
+} */
+
+::ng-deep body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active, 
+::ng-deep body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li.ui-state-active, 
+::ng-deep body .ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-active, 
+::ng-deep body .ui-tabview.ui-tabview-right .ui-tabview-nav li.ui-state-active
+{
+    background:none !important;
+    border:0 !important;
+    border-bottom:2px solid #1ec00b !important;
+    /* animation: border-bottom 1s linear; */
+}
+
+
+
+::ng-deep body .ui-tabview.ui-tabview-top .ui-tabview-nav li, 
+::ng-deep body .ui-tabview.ui-tabview-top .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover
+{background:none;border:0;border-bottom:2px solid transparent; 
+    /* transition: all ease-in 0.3s; */
+}
+
+
+
+
+
+::ng-deep body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-tabview-selected a, 
+::ng-deep body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active:hover a{color:#1ec00b}
+::ng-deep body .ui-tabview.ui-tabview-top .ui-tabview-nav li a{padding: 1em 1em 12px 1em;
+    font-size: 16px;}
+/* Tab End */
+
+
+
+
+
+.boxShadowNone{
+    box-shadow: none !important;
+}
+.imgIconTabs{
+    margin-right: 10px;
+}
+
+.lifeInsurance-disability{
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0px 0 3px #00000029;
+    border-radius: 2px;
+    padding: 16px 24px;
+    margin-bottom: 24px;
+    position: relative;
+    margin-left: 3px;
+}
+
+h3.commonHeadingPolicy-description{
+    font-size: 20px;
+    color: #1ec00b;
+    margin-bottom: 16px;
+}
+.lifeInsurance-disability p{
+    font-size: 14px;
+    color: #222;
+}
+.lifeInsurance-disability p span{
+    font-weight: 500;
+}
+
+.policyCycleDivMain{
+    position: absolute;
+    right: 24px;
+    top: 16px;
+}
+
+.policyCycleDiv{
+    width: 390px;
+    background-color: #F8F8F8;
+    padding: 24px 16px 24px 66px;
+    position: relative;
+}
+
+.policyCycleDiv img.policyCycleImage{
+    position: absolute;
+    left: 16px;
+}
+
+.policyCycleDiv p{
+    font-size: 14px !important;
+    color: #777777 !important;
+    margin-bottom: 8px !important;
+}
+
+.policyCycleDiv h4{
+    font-size: 18px;
+    color: #222;
+    margin-bottom: 0px;
+}
+
+section.lifeInsurance-disability.benefitAdministrator{
+    min-height: 133px;
+}
+
+.coverageBenefitsSection{
+    background-color: #F7F7F7;
+    border: #EFEFEF solid 1px;
+    width: 100%;
+    padding: 16px 30px; 
+    /* margin-bottom: 72px; */
+}
+
+.coverageBenefitsSection p{
+    font-size: 14px;
+    color: #222;
+    margin-bottom: 16px;
+}
+
+.coverageBenefitsSection p.italicText{
+    font-size: 14px;
+    color: #777;
+    font-style: italic;
+    margin-top: 16px;
+    margin-bottom: 0;
+}
+
+.whiteboxwithIconandText{
+    background: #fff;
+    box-shadow: 0px 1px 3px #00000029;
+    padding: 16px 0;
+    text-align: center;
+}
+
+.whiteboxwithIconandText img{
+    margin-bottom: 16px;
+    width: 60px;
+}
+
+.whiteboxwithIconandText h5{
+    font-size: 14px;
+    margin: 0px;
+    font-weight: 500;
+}
+
+.mainSectionHealthBenefits{
+    display: inline-block;
+    width: 100%;
+}
+
+.leftSectionMain{
+    width: 100%;
+    display: block;
+}
+.aboutYourMedicalSection{
+    background-color: #FFFFFF;
+    border-radius: 2px;
+    box-shadow: 0 0 3px #00000029;
+    width: 100%;
+    display: block;
+    padding: 16px 24px;
+    margin-bottom: 24px;
+    margin-left: 3px;
+}
+
+.aboutYourMedicalSection p{
+    font-size: 14px;
+    color: #222;
+}
+
+.aboutYourMedicalSection span.spantextAboutSection{
+    font-size: 14px;
+    color: #222;
+    font-weight: 500;
+}
+
+
+.insuranceBenifitsAdministrator{
+    background-color: #FFFFFF;
+    box-shadow: 0 0 3px #00000029;
+    border-radius: 2px;
+    width: 100%;
+    display: block;
+    padding: 16px 24px;
+    margin-bottom: 24px;
+    margin-left: 3px;
+}
+.insuranceBenifitsAdministrator p{
+    font-size: 14px;
+    color: #222222;
+    margin-bottom: 16px;
+}
+
+.greyBoxed{
+    width: 100%;
+    display: inline-block;
+}
+
+.greyBoxed .policyCycleDiv{
+    display: inline-block;
+    margin-right: 45px;
+}
+.greyBoxed .policyCycleDiv:last-child{
+    margin-right: 0px;
+}
+
+
+.medicalcoveragebenefits{
+    background-color: #F7F7F7;
+    box-shadow: 0 0 3px #00000029;
+    border-radius: 2px;
+    width: 100%;
+    display: block;
+    padding: 16px 24px;
+    margin-bottom: 24px;
+    margin-left: 3px;
+}
+
+.whiteSmallBox{
+    width: 100%;
+    display: inline-block;
+}
+
+.whiteSingleBox{
+    width: 120px;
+    text-align: center;
+    display: inline-block;
+    margin-right: 20px;
+    background-color: #fff;
+    box-shadow: 0px 1px 3px #00000029;
+}
+.whiteSingleBox span{
+    font-size: 45px;
+    padding-top: 12px;
+    display: block;
+}
+.whiteSingleBox:last-child{
+    margin-right: 0px;
+}
+.whiteSingleBox h6{
+    font-size: 14px;
+    color: #222222;
+    font-weight: 500;
+    margin-top: 8px;
+    margin-bottom: 12px;
+}
+
+
+.claimProcessSection{
+    width: 100%;
+    box-shadow: 0 0 3px #00000029;
+    border-radius: 2px;
+    background-color: #fff;
+    padding: 16px 0px;
+    margin-bottom: 24px;
+    margin-left: 3px;
+}
+
+.claimProcessSection>.commonHeadingPolicy-description{
+    margin-left: 24px;
+}
+
+::ng-deep tabset.tab-container ul.nav.nav-tabs{
+    border-bottom: #ccc solid 2px;
+    margin-bottom: 24px;
+}
+
+::ng-deep tabset.tab-container .nav-tabs .nav-link{
+    border: none !important;
+    color: #222;
+}
+
+::ng-deep tabset.tab-container ul.nav.nav-tabs .nav-link:hover{
+    border: none !important;
+}
+::ng-deep tabset.tab-container ul.nav.nav-tabs .nav-link.active{
+    border: none !important;
+    border-bottom: #1ec00b solid 2px !important;
+    color: #1ec00b;
+}
+
+.networkHospitalSingleCard{
+    background-color: #fff;
+    box-shadow: 0px 1px 3px #00000029;
+    padding: 24px;
+    display: inline-block;
+    width: 250px;
+    transition: all ease-in-out 0.5s;
+    margin-right: 30px;
+}
+.networkHospitalSingleCard:hover{
+    box-shadow: 0px 3px 6px #1ec00b62;
+}
+.non-network{
+    padding: 24px 24px 5px 24px;
+}
+
+.networkHospitalSingleCard .numberCard{
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    font-size: 29px;
+    text-align: center;
+    background-color: #1ec00b;
+    color: #fff;
+}
+
+.networkHospitalSingleCard h4{
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #222;
+    margin-top: 16px;
+}
+
+.networkHospitalSingleCard p{
+    color: #777777;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.networkHospitalSingleCard:last-child{
+    margin-right: 0px;
+}
+
+::ng-deep tab.tab-pane.active .carousel-inner{
+    overflow: initial;
+}
+
+
+.digitalAppsection{
+    background-color: #fff;
+    box-shadow: 0px 0 3px #00000029;
+    padding: 24px;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 24px;
+    margin-left: 3px;
+}
+
+.digitalAppsectionWithIcon{
+    width: 352px;
+    margin-right: 100px;
+    display: inline-block;
+    position: relative;
+    padding-left: 66px;
+}
+
+.digitalAppsectionWithIcon p{
+    font-size: 14px;
+    color: #222;
+    font-weight: 500;
+}
+
+.digitalAppsectionWithIcon img{
+    position: absolute;
+    left: 0px;
+}
+
+.digitalAppsectionWithIcon:last-child{
+    margin-right: 0px;
+}
+
+
+.reachOutSection{
+    background-color: #F7F7F7;
+    box-shadow: 0px 0 3px #00000029;
+    padding: 24px;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 24px;
+    margin-left: 3px;
+}
+
+.reachOutSection p{
+    font-size: 14px;
+    color: #222;
+    margin-bottom: 12px;
+    font-weight: 400;
+}
+.reachOutSectionContactCard{
+    width: 397px;
+    display: inline-block;
+    margin-right: 30px;
+    box-shadow: 0px 1px 3px #00000029;
+    border-radius: 2px;
+    background-color: #fff;
+    padding: 16px 24px;
+}
+
+.reachOutSectionContactCard p{
+    font-size: 14px;
+    color: #222;
+    font-weight: 500;
+}
+
+.reachOutSectionContactCard p span{
+    font-size: 20px;
+    vertical-align: bottom;
+    margin-right: 5px;
+}
+
+.reachOutSectionContactCard p span.contact::before{
+    color: #EE8800;
+}
+.reachOutSectionContactCard p span.phone::before{
+    color: #00AFBE;
+}
+
+.reachOutSectionContactCard p span.mobile::before{
+    color: #777777;
+}
+
+.profileNameandImage{
+    position: relative;
+    padding-left: 55px;
+    display: block;
+    margin-bottom: 25px;
+}
+.profileNameandImage img{
+    width: 38px;
+    height: 38px;
+    position: absolute;
+    left: 0px;
+    border-radius: 50%;
+}
+
+.profileNameandImage span{
+    display: block;
+    padding-top: 6px;
+    font-weight: 500;
+}
+
+
+::ng-deep .carousel-control-next-icon, ::ng-deep .carousel-control-prev-icon{
+    background-color: #FFFFFF;
+    box-shadow: 0 0 12px #00000029;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    transition: all ease-in-out 0.5s;
+}
+
+::ng-deep .carousel-control-prev {
+    left: -5px;
+    cursor: pointer;
+    width: 6%;
+}
+
+::ng-deep .carousel-control-next {
+    right: -7px;
+    cursor: pointer;
+    width: 6%;
+}
+
+::ng-deep .carousel-control-next-icon{
+    background-image: url(../../../assets/images/arrowforward.svg);
+}
+
+::ng-deep .carousel-control-prev-icon{
+    background-image: url(../../../assets/images/arrowforward.svg);
+    transform: rotate(180deg);
+}
+
+::ng-deep section.claimProcessSection .carousel-inner{
+    overflow: visible;
+    margin: 24px 24px 5px 24px;
+}
+::ng-deep .carousel-control-next-icon:hover{
+    transform: scale(1.1);
+}
+
+.networkHospitalsSectionSingleCard{
+    box-shadow: 0px 1px 3px #00000029;
+    border-radius: 2px;
+    background-color: #fff;
+    width: 250px;
+    padding: 24px;
+    transition: all ease-in-out 0.5s;
+}
+
+.networkHospitalsSectionSingleCard:hover{
+    box-shadow: 0px 3px 6px #1ec00b62;
+}
+
+
+.networkHospitalsSectionSingleCard h5{
+    font-size: 16px;
+    color: #222222;
+    margin-bottom: 19px;
+    font-weight: 500;
+}
+
+.networkHospitalsSectionSingleCard p{
+    color: #777777;
+    font-size: 14px;
+    font-weight: 400;
+    position: relative;
+    padding-left: 24px;
+}
+
+.networkHospitalsSectionSingleCard p span{
+    position: absolute;
+    left: -6px;
+    font-size: 25px;
+}
+
+
+.reachOutSectionContactCard:last-child{
+    margin-right: 0px;
+}
+.progressDetails{
+    width: 356px;
+    background-color: #F0F8FF;
+    box-shadow: 0 0 3px #00000029;
+    border-radius: 2px;
+    margin-left: 42px;
+    display: inline-block;
+    margin-right: 3px;
+}
+
+
+.progressDetails ul{
+    list-style: none;
+    margin: 30px 0 0 0;
+    padding: 0px;
+}
+
+.progressDetails ul li{
+    display: block;
+    text-align: center;
+    cursor: pointer;
+}
+
+.progressDetails ul li .imageSecProgressLi{
+    position: relative;
+}
+
+.progressDetails ul li .imageSecProgressLi .iconCheckCommon{
+    position: absolute;
+    right: 130px;
+    top: 5px;
+    width: 28px;
+    height: 28px;
+    background: #f8f8f8;
+    color: #222;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+.progressCommon{
+    position: absolute;
+    right: 130px;
+    top: 5px;
+    font-size: 30px;
+}
+
+
+.progressDetails ul li.active .imageSecProgressLi .iconCheckCommon{
+    background: #73CC07;
+    color: #fff;
+}
+
+.progressDetails ul li.progressLi .imageSecProgressLi .progressCommon::before{
+    color: #1ec00b;
+}
+
+.progressDetails ul li.disableLi p{
+    color: #777 !important;
+}
+
+.progressDetails ul li p{
+    font-size: 15px;
+    color: #1ec00b;
+    font-weight: bold;
+    margin-bottom: 90px;
+    margin-top: 16px;
+    position: relative;
+}
+
+.progressDetails ul li p::after{
+    content: "";
+    border-right: #ccc dotted 1px;
+    display: block;
+    height: 70px;
+    position: absolute;
+    left: 180px;
+    top: 29px;
+}
+.progressDetails ul li:last-child p::after{
+    display: none;
+}
+
+.progressDetails ul li:last-child p{
+    margin-bottom: 52px !important;
+}
+
+button.btn.btnprimary{
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 2px;
+    background-color: #1ec00b;
+    padding: 10px 24px;
+    margin-bottom: 24px;
+    margin-left: 0;
+}
+button.btn.btnprimary span::before{
+    color: #fff;
+}
+
+
+
+.viewMedicalInsuranceBtn button.btn.btnprimary{
+    min-width: 166px !important;
+    width: 100% !important;
+}
+
+/* ::ng-deep section.claimProcessSection .carousel-control-prev{
+    display: none;
+} */
+
+::ng-deep section.claimProcessSection .carousel-control-next{
+    opacity: 1 !important;
+}
+table {
+    width: 100%;
+}
+tr.mat-row, tr.mat-footer-row{
+    background: rgb(248 248 248);
+}
+
+.raiseRequestLink{
+    text-align: right;
+    margin-top: 18px;
+    margin-bottom: -35px;
+    position: relative;
+    z-index: 2;
+    width: 200px;
+    margin-left: auto;
+}
+.raiseRequestLink ul{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+.raiseRequestLink ul li{
+    display: inline-block;
+    margin-right: 16px;
+}
+.raiseRequestLink ul li:last-child{
+    margin-right: 0px;
+}
+.raiseRequestLink ul li a{
+    color: #777;
+    font-size: 18px;
+}
+.raiseRequestLink ul li a.linkRaiseReq{
+    color: #1ec00b;
+    text-transform: uppercase;
+    font-size: 16px !important;
+}
+.raiseRequestLink ul li a span{
+    vertical-align: middle;
+}
+.raiseRequestLink ul li a:hover span{
+    color: #1ec00b;
+}
+
+.requestCard{
+    min-width: 1255px;
+    width: 1255px;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0px 3px 4px #00000029;
+    border-radius: 8px;
+    padding: 20px;
+}
+.requestCard .paddright-20{
+    padding-right: 20px;
+}
+
+.requestLeftCard{
+    width: 100%;
+    border: #CCCCCC solid 1px;
+    border-radius: 10px;
+    padding: 16px;
+    background-color: #fff;
+}
+.requestLeftCard .headerLeftCard{
+    display: block;
+    border-bottom: #CCCCCC solid 1px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+p.requestLeftCardText{
+    font-size: 14px;
+    line-height: 22px;
+    color: #222;
+}
+p.requestLeftCardText span{
+    margin-right: 9px;
+    font-size: 19px;
+    vertical-align: middle;
+}
+p.requestLeftCardText span.circle{
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #fff;
+    border: #1ec00b solid 1px;
+    margin-right: 12px;
+}
+p.requestLeftCardText span.location{
+    margin-left: -4px;
+}
+p.requestLeftCardText span.location::before{
+    color: #1ec00b;
+}
+
+.headerLeftCard .personNameText{
+    font-weight: 500;
+    color: #222;
+}
+
+span.float-right span i.app-call_icon{
+    margin-right: 10px;
+    color: #1ec00b;
+}
+
+span.float-right span i.app-Arrow{
+    color: #1ec00b;
+    font-size: 20px;
+    margin-left: 16px;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.requestRightCard{
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    background-color: #F7F7F7;
+    padding: 16px;
+    height: 120px;
+}
+.requestRightCard .marBottom-16{
+    margin-bottom: 16px !important;
+}
+
+.form-group.cstmField.col-md-12.driverSearchInput.mb-0 {
+    width: calc(100% - 156px) !important;
+    max-width: calc(100% - 156px);
+}
+.driverSearchInput input{
+    padding-left: 30px;
+}
+
+.requestRightCard .buttonBook{
+    max-width: 135px;
+    width: 135px;
+    background-color: #1ec00b;
+    margin-left: 16px;
+    border: none;
+    color: #fff;
+    padding: 0 13px;
+    border-radius: 2px;
+    max-height: 34px;
+    cursor: pointer;
+    font-size: 14px;
+    text-transform: uppercase;
+    line-height: 30px;
+}
+
+.requestRightCard .buttonBook span{
+    display: none;
+}
+.requestRightCard .buttonBook.bookedButton{
+    background-color: #73CC07;    
+    color: #fff;
+    padding: 0px;
+}
+.requestRightCard .buttonBook.bookedButton span{
+    display: inline;
+    vertical-align: sub;
+    font-size: 18px;
+    margin-right: 4px;
+}
+.leftsidetextsection{
+    text-align: left;
+    width: 100%;    
+    display: inline-block;
+}
+
+.leftsidetextsection .flagS{
+    position: relative;
+}
+
+.leftsidetextsection .flagS img{
+    position: absolute;
+    left: -23px;
+    top: -1px;
+    display: none;
+}
+
+.leftsidetextsection .flagS span{
+    position: absolute;
+    left: -12px;
+    top: 3px;
+    font-size: 11px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.leftsidetextsection ul{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+.leftsidetextsection ul li{
+    display: inline-block;
+    margin-right: 25px;
+    color: #222222;
+    font-size: 14px;
+}
+
+
+.leftsidetextsection ul li.firstLi{
+    margin-left:0px !important;
+    position: relative;
+    padding-left: 25px;
+}
+
+.leftsidetextsection ul li.firstLi::before{
+    content:"";
+    width: 12px;
+    height: 12px;
+    background-color: #4DAF51;
+    display: block;
+    position: absolute;
+    left: 0px;
+    top: 5px;
+    border-radius: 50%;
+}
+
+.leftsidetextsection ul li.firstLi.pending::before{
+    background-color: #FEC109 !important;
+}
+
+.leftsidetextsection ul li.firstLi.canceled::before{
+    background-color: #F44436 !important;
+}
+
+.leftsidetextsection ul li span.grey{
+    color: #777;
+}
+
+.leftsidetextsection ul li:last-child{
+    margin-right: 0px;
+}
+
+
+.rightsideicononly{
+    text-align: right;
+    width: 100%;
+    display: inline-block;
+}
+.rightsideicononly ul{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+.rightsideicononly ul li{
+    display: inline-block;
+    margin-right: 20px;
+    line-height: 16px;
+}
+.rightsideicononly ul li:last-child{
+    margin-right: 0px;
+}
+.rightsideicononly ul li a{
+    color: #777;
+    font-size: 18px;
+}
+.rightsideicononly ul li a:hover{
+    color: #1ec00b;
+}
+.driverSearchInput{
+    position: relative;
+}
+
+.driverSearchInput span.app-search_icon{
+    position: absolute;
+    top: 10px;
+    left: 15px;
+}
+.driverSearchInput input.form-control{
+    padding-left: 30px;
+}
+
+.filterInsideTab{
+    list-style: none;
+    margin: 0px;
+    padding: 0px 0 6px 0;
+}
+.filterInsideTab li{
+    min-width: 130px;
+    max-width: 130px;
+    margin-right: 16px;
+    display: inline-block;
+}
+
+.filterInsideTab li.locationInput{
+    min-width: 200px;
+    max-width: 200px;
+}
+
+.filterInsideTab li input.form-control{
+    background-color: #fff;
+    box-shadow: 0px 3px 6px #00000026;
+    border-radius: 16px;
+}
+
+.iconBeforePlacement{
+    position: relative;
+}
+.filterInsideTab li .iconBeforePlacement input{
+    padding-left: 35px;
+}
+.filterInsideTab li span.app-search_icon{
+    position: absolute;
+    left: 15px;
+    top: 11px;
+}
+
+a.float-right.excelicon{
+    color: #777;
+}
+
+span.app-excel {
+    font-size: 22px;
+    color: #777;
+}
+
+a.float-right.excelicon:hover span.app-excel{
+    color: #1ec00b;
+}
+
+.glBtn.customButtonSection{
+    background-color: #f8f8f8;
+    margin-top: 0px;
+}
+
+.glBtn.customButtonSection button.btn.secondary-outline-button{
+    background-color: #f8f8f8;
+    color: #777;
+    border: #777 solid 1px;
+    cursor: pointer;
+}
+
+.glBtn.customButtonSection button.btn.secondary-outline-button.commonGreyBtnNew:disabled{
+    background-color: #f8f8f8;
+    color: #777;
+    border: #777 solid 1px;
+    cursor: default;
+}
+
+.glBtn.customButtonSection button.btn.secondary-outline-button.commonGreyBtnNew{
+    background-color: #1ec00b;
+    color: #fff;
+    border: #1ec00b solid 1px;
+    cursor: pointer;
+}
+
+.popovermain-inside h6{
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 8px;
+    color: #222;
+    font-weight: 500;
+}
+
+.popovermain-inside ul.tripsLegends{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+.popovermain-inside ul.tripsLegends li{
+    display: block;
+    text-align: left;
+    margin: 0px;
+    padding-bottom: 8px;
+    font-size: 13px;
+    color: #777777;
+}
+
+
+
+.popovermain-inside ul.tripsLegends li:last-child{
+    padding-bottom: 16px;
+}
+
+.popovermain-inside ul.tripsLegends li span{
+    float: right;
+    line-height: 20px;
+    color: #1ec00b;
+}
+.popovermain-inside ul.tripsLegends li span.boldIconArrow{    
+    font-size: 20px;
+}
+.popovermain-inside ul.tripsLegends li span.boldIconArrow i{
+    font-weight: bold;
+}
+
+.popovermain-inside ul.tripsLegends li span.boldIconEntireDay{    
+    font-size: 17px;
+}
+.popovermain-inside ul.tripsLegends li span.boldIconEntireDay i{
+    font-weight: bold;
+}
+
+.popovermain-inside ul.approvalLegends{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.popovermain-inside ul.approvalLegends li{
+    display: block;
+    text-align: left;
+    margin: 0px;
+    padding-bottom: 8px;
+    font-size: 13px;
+    color: #777777;
+}
+.popovermain-inside ul.approvalLegends li span{
+    float: right;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #4DAF51;
+    margin-top: 3px;
+}
+.popovermain-inside ul.approvalLegends li span.approvalGreen{
+    background-color: #4DAF51;
+}
+
+.popovermain-inside ul.approvalLegends li span.approvalYellow{
+    background-color: #FEC109;
+}
+
+.popovermain-inside ul.approvalLegends li span.approvalRed{
+    background-color: #F44436;
+}
+
+.requestLeftCard.customCardBackground{
+    background-color: #EFF7FF;
+    border: none !important;
+}
+
+span.float-right.carNumberText{
+    font-size: 16px !important;
+    font-weight: 500;
+    margin-right: 0px !important;
+}
+
+p.requestLeftCardText span.app-vendor_icon{
+    color: #1ec00b;
+    font-size: 18px;
+    vertical-align: baseline;
+}
+
+p.requestLeftCardText span.app-driver_icon{
+    color: #1ec00b;
+    font-size: 18px;
+    margin-right: 6px;
+}
+
+span.float-right.carNameText{
+    font-size: 14px !important;
+    font-weight: normal;
+    margin-right: 0px !important;
+}
+
+.requestRightCard.multipleFields .paddright16{
+    padding-right: 16px;
+}
+.form-group.cstmField.minwidth155{
+    min-width: 131px !important;
+    width: 131px;
+    max-width: 131px !important;
+}
+
+.form-group.cstmField.minwidth120{
+    min-width: 120px !important;
+    width: 120px;
+    max-width: 120px !important;
+}
+
+.paddright16{
+    padding-right: 16px !important;
+}
+
+.iconHelper{
+    position: relative;
+}
+.iconHelper input{
+    padding-left: 30px;
+}
+.iconHelper span{
+    position: absolute;
+    left: 10px !important;
+    top: 38px !important;
+}
+
+.mergerequest-card{
+    width: 100%;
+    background: #F4F9FF;
+    border: 1px solid #97e399;
+    border-radius: 4px;
+    padding: 16px;
+    position: relative;
+}
+.mergerequest-card .deleteIcon{
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    color: #1ec00b;
+    cursor: pointer;
+}
+.mergerequest-card label{
+    font-size: 13px;
+    color: #777777;
+    display: block;
+    padding-bottom: 2px;
+    margin-bottom: 0px;
+}
+
+.mergerequest-card p{
+    font-size: 14px;
+    color: #222;
+}
+
+.glBtn.customButtonSection.modalbtns{
+    background-color: transparent !important;
+    margin-top: 20px;
+}
+
+.glBtn.customButtonSection.modalbtns button.btn.secondary-outline-button{
+    background-color: transparent;
+}
+
+.form-group.cstmField.pr-0.checkboxCstmField {
+    min-width: 55px;
+    max-width: 55px;
+    display: inherit;
+    padding-top: 10px;
+}
+.form-group.cstmField.pr-0.checkboxCstmField label{
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #222;
+    margin-top: -3px;
+}
+
+
+.form-group.cstmField.minwidth158{
+    min-width: 158px !important;
+    width: 158px;
+    max-width: 158px !important;
+}
+
+
+.calendarHelperIcon{
+    position: relative;
+}
+
+.calendarHelperIcon span.commonCalendarIcon{
+    position: absolute;
+    right: 12px;
+    top: 37px;
+    color: #389ff3;
+    font-size: 15px;
+    pointer-events: none;
+}
+
+.readonlyContentSection{
+    border-radius: 4px;
+    background-color: #F5F5F5;
+    padding: 16px;
+    width: 100%;
+    margin: 0px 15px 20px 15px;
+}
+.employeeSearchRaiseReq{
+    position: relative;
+}
+.employeeSearchRaiseReq input{
+    height: 56px;
+    box-shadow: 0px 3px 10px #0000001A;
+    background-color: #fff;
+    margin-top: 7px;
+}
+
+.employeeSearchRaiseReq span.app-search_icon{
+    position: absolute;
+    right: 0px;
+    top: 7px;
+    background: #ccc;
+    padding: 15px;
+    color: #fff;
+    font-size: 26px;
+    border-radius: 2px 0 0 2px;
+}
+
+.reasonAddUserIcon div.form-group.cstmField{
+    width: calc(100% - 44px);
+    float: right;
+}
+.reasonAddUserIcon a{
+    color: #777;
+    display: inline-block;
+    padding-top: 37px;
+}
+.reasonAddUserIcon span.app-add_user_icon{    
+    display: inline-block;
+}
+
+
+.btn-group.travellerLocalGroup{
+    border: 1px solid #ccc;
+    border-radius: 2px !important;
+}
+
+.btn-group.travellerLocalGroup .btn.btn-primary{
+    border: none;
+    border-radius: 2px !important;
+    min-width: 184px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 13px;
+    color: #BBBBBB;
+    margin: 0px;
+    background-color: #fff;
+    text-transform: capitalize;
+}
+
+.btn-group.travellerLocalGroup .btn.btn-primary.active{
+    background: #F0F8FF;
+    border: 1px solid #1ec00b;
+    color: #1ec00b;
+    margin: -1px 1px -1px -1px;
+}
+
+.flightNumberIcons div.form-group.cstmField{
+    width: calc(100% - 100px);
+    display: inline-block;
+}
+
+.flightNumberIcons a.addUser{
+    margin-left: 16px;
+    color: #777;
+}
+.flightNumberIcons a.addLocationIcon{
+    color: #777;
+    margin-left: 16px;
+}
+.flightNumberIcons a.addLocationIcon span.app-location-01{
+    font-size: 22px;
+    vertical-align: sub;
+}
+.infoIconAuthority{
+    font-size: 20px;
+    cursor: pointer;
+}
+.form-group.cstmField.pr-0.checkboxCstmFieldNotAvailable.mb-0 {
+    display: inline-flex;
+    padding-top: 3px;
+    margin-right: 16px;
+}
+.form-group.cstmField.pr-0.checkboxCstmFieldNotAvailable.mb-0  label{
+    display: inline-flex;
+    margin-top: -4px;
+}
+
+.flagS.luxuryText span{
+    color: #222 !important;
+}
+.iconVendorAndDriverCommon{
+    position: relative;
+}
+
+.iconVendorAndDriverCommon span.app-search_icon{
+    position: absolute;
+    left: 13px;
+    top: 11px;
+}
+
+
+.cstmField input:hover, 
+body .ui-inputtext:hover, 
+.cstmField input:focus,
+body .ui-inputtext:focus{
+    border-color: #389ff3;
+}

@@ -1,0 +1,45 @@
+.dashboard-topheader{
+    background-color: #97e399;
+}
+.dashboard-topheader h1{
+    font-size: 18px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+    line-height: 40px;
+}
+
+ul.dashboardheader-form{
+    width: 100%;
+}
+
+ul.dashboardheader-form li{
+    display: inline-block;
+    margin-right: 16px;
+    width: 220px;
+}
+ul.dashboardheader-form li:last-child{
+    margin-right: 0px;
+}
+
+ul.dashboardheader-form li .form-group{
+    margin-bottom: 0px;
+}
+
+ul.dashboardheader-form li .form-group.cstmField input{
+    border-radius: 8px;
+    height: 40px;
+    padding: 0.42em 30px 0.42em 10px;
+    border: none;
+}
+
+.commonIconClass{
+    position: relative;
+}
+.commonIconClass span.app-search_icon{
+    position: absolute;
+    top: 14px;
+    right: 12px;
+    color: #777;
+}
+

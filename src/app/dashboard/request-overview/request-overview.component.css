@@ -1,0 +1,189 @@
+.request-overview-main{
+    width: 100%;
+    background-color: transparent;
+}
+.request-overview-main h3{    
+    margin: 16px 0 16px 0;
+    position: relative;
+}
+.request-overview-main h3 span{
+    font-size: 16px;
+    color: #222222;
+    font-weight: 500;
+}
+
+
+.main-graph-section{
+    width: 100%;
+    display: flex;
+}
+
+.main-graph-section li{
+    width: 244px;
+    margin-right: 16px;
+    background-color: #FFFFFF;
+    max-height: 100px;
+    border-radius: 8px;    
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.main-graph-section li.active{
+    /* height: 156px;
+    max-height: 156px; */
+    box-shadow: 0px 3px 15px #1ec00b26;
+    margin-top: -30px;
+}
+
+.main-graph-section li a{
+    padding: 20px;
+    position: relative;
+}
+
+.main-graph-section li:last-child{
+    margin-right: 0px;
+}
+
+.main-graph-section li .commonsmall-text{
+    font-size: 14px;
+    color: #777;
+    line-height: 19px;
+    margin-bottom: 4px;
+}
+
+.total .totalText{
+    color: #606060;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.new .newText{
+    color: #1ec00b;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.upcoming .upcomingText{
+    color: #3385D6;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.executed .executedText{
+    color: #71BF74;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.cancelled .cancelledText{
+    color: #F6695E;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.common-graph-position {
+    position: absolute;
+    right: 20px;
+    top: 23px;
+}
+
+.graphposition-second{
+    position: absolute;
+    left: 20px;
+    top: 40px;
+    z-index: 1;
+}
+
+.details-display{
+    width: 222px;
+    padding-left: 100px;
+    padding-right: 20px;
+}
+
+.details-display p{
+    font-size: 10px;
+    color: #777;
+    margin-bottom: 15px;
+}
+.details-display p:last-child{
+    margin-bottom: 0px;
+}
+.details-display p span{
+    float: right;
+    color: #222222;
+}
+.insideGraphText{
+    font-size: 12px;
+    color: #777777;
+    position: absolute;
+    top: 25px;
+    left: 28px;
+    margin: 0px;
+    line-height: 14px;
+    z-index: -1;
+}
+.insideGraphText span{
+    font-size: 14px;
+    display: block;
+    color: #222;
+}
+
+.details-display .progress{
+    height: 2px;
+    margin-top: 2px;
+}
+.main-graph-section li.commonextendclass{
+    position: relative;
+}
+.main-graph-section li.commonextendclass.active a{
+    height: 156px;
+    max-height: 156px;
+    box-shadow: 0px 3px 15px #1ec00b26;
+    background: #fff;
+    border-radius: 8px;
+}
+.main-graph-section li.commonextendclass a{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+
+
+
+/* month quater dropdowns css */
+.col.btngroupmonth-yearmain {
+    padding-right: 0px;
+    text-align: right;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    font-size: 14px;
+    width: 346px;
+    background: #fff;
+    border-radius: 8px;
+    padding-left: 0px;
+}
+.max-width125 {
+    max-width: 85px !important;
+    width: 85px;
+    margin-right: 1px;
+}
+.btngroupborder-class {
+    border-radius: 8px !important;
+}
+  
+.project-profitgraph {
+    margin-top: 42px;
+}
+
+
+
+
+@media (max-width: 1280px) {
+    .max-width125 {
+      max-width: 76px !important;
+      margin-right: 1px;
+    }
+}

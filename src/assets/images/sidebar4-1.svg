@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="81" height="81" viewBox="0 0 81 81">
+  <g id="Group_27910" data-name="Group 27910" transform="translate(-1107 -832)">
+    <g id="Ellipse_3260" data-name="Ellipse 3260" transform="translate(1107 832)" fill="none" stroke="#2e4770" stroke-width="1" stroke-dasharray="2 3">
+      <circle cx="40.5" cy="40.5" r="40.5" stroke="none"/>
+      <circle cx="40.5" cy="40.5" r="40" fill="none"/>
+    </g>
+    <g id="resume" transform="translate(1049 829)">
+      <path id="Path_23127" data-name="Path 23127" d="M80,24h29V58.068H80Z" transform="translate(0 0)" fill="#3a5cac"/>
+      <g id="Group_23792" data-name="Group 23792" transform="translate(82.231 26.974)">
+        <path id="Path_23128" data-name="Path 23128" d="M112,56h10.409V67.153H112Z" transform="translate(-111.256 -56)" fill="#fff"/>
+        <path id="Path_23129" data-name="Path 23129" d="M248,128h11.153v1.487H248Z" transform="translate(-234.616 -123.471)" fill="#fff"/>
+        <path id="Path_23191" data-name="Path 23191" d="M248,128h11.153v1.487H248Z" transform="translate(-234.616 -126.715)" fill="#fff"/>
+        <path id="Path_23130" data-name="Path 23130" d="M248,168h11.153v1.487H248Z" transform="translate(-234.616 -159.753)" fill="#fff"/>
+        <path id="Path_23137" data-name="Path 23137" d="M104,328h24.871v1.487H104Z" transform="translate(-104 -314.615)" fill="#fff"/>
+      </g>
+      <rect id="Rectangle_7527" data-name="Rectangle 7527" width="6" height="6" rx="3" transform="translate(92 45.509)" fill="#fff"/>
+      <rect id="Rectangle_7539" data-name="Rectangle 7539" width="7" height="6" rx="3" transform="translate(82 45.509)" fill="#fff"/>
+      <path id="Path_23139" data-name="Path 23139" d="M310.692,172.728v-8.653L304,155.153l.815-.652a3.718,3.718,0,0,1,5.225.581l.652.815h1.487V144h.964a2.788,2.788,0,0,1,2.645,1.907l3.826,11.477v1.487l-2.231,5.948v7.909Z" transform="translate(-203.181 -108.847)" fill="#5fa3d9"/>
+      <path id="Path_23141" data-name="Path 23141" d="M296,416h1.487v1.487H296Z" transform="translate(-195.925 -355.567)" fill="#fff"/>
+      <path id="Path_23142" data-name="Path 23142" d="M328,416h2.974v1.487H328Z" transform="translate(-224.951 -355.567)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

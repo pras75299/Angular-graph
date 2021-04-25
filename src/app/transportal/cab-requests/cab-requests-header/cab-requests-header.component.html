@@ -1,0 +1,100 @@
+<section class="header-cab-request">
+  <div class="row mx-0">
+    <div class="form-row w-100">
+      <div class="form-group cstmField col-md-3 transportDeskMultiselect">
+        <label>Transport Desk </label>
+        <!-- <p-multiSelect [options]="cities" [(ngModel)]="selectedCities4" optionLabel="name" display="chip"></p-multiSelect> -->
+        <p-multiSelect [options]="cities" [(ngModel)]="selectedCities4" defaultLabel="Noida SEZ-Tower2-U1-All Floors" optionLabel="name"></p-multiSelect> 
+      </div>
+
+      <div class="form-group cstmField col-md-2">
+        <label>Cab Type </label>
+        <p-dropdown [options]="CabType" [(ngModel)]="selectedCabType" placeholder="Select" optionLabel="name"></p-dropdown> 
+      </div>
+      <div class="form-group cstmField col-md-2">
+        <label>Request Duration </label>
+        <p-calendar #dateFilter [numberOfMonths]="2" 
+        hideOnDateTimeSelect="true" 
+        selectionMode="range" 
+        placeholder="" 
+        icon="app-Calendar" 
+        [showIcon]="true" 
+        [readonlyInput]="true" 
+        dateFormat="dd-M-y" 
+        (onSelect)="onDatesRangeFilterSelected($event)" 
+        [(ngModel)]="datesRangeFilter"></p-calendar> 
+      </div>
+      <div class="form-group cstmField iconClassCustom col-md-2">
+        <label>Time</label>
+
+        <div class="inputLikeDivTime">
+          <p-calendar [(ngModel)]="date8" [timeOnly]="true" inputId="timeonly" placeholder="" hourFormat="12"></p-calendar>
+          <span class="gapBtTime">-</span>
+          <p-calendar [(ngModel)]="date9" [timeOnly]="true" inputId="timeonly1" placeholder="" hourFormat="12"></p-calendar>
+        </div>
+        <span class="app-time iconpositioncustom"></span>
+        
+      </div>
+
+      <div class="form-group cstmField col-md-3 autocompleteFromGroup maxwidth271">
+        <label>Employee Code </label>
+        <!-- <p-autoComplete [(ngModel)]="selectedCountryAdvanced" class="customautocomplete" [suggestions]="filteredCountries" placeholder="Search by SAP ID/Name" (completeMethod)="filterCountry($event)" field="name" [dropdown]="false">
+          <ng-template let-country pTemplate="item" class="autoEmprow">
+              <div class="country-item">
+                <div class="row autoEmprow">  
+                  <div class="col-6">
+                      <span class="auto_Ellipses auto_dark">
+                            {{country.name}}  
+                      </span>
+                  </div>  
+                  <div class="col-6 text-right auto_dark"> 
+                      {{country.employeeId}}
+                  </div>  
+                  <div class="col-6"> {{country.employeePosition}}</div>   
+                  <div class="col-6 text-right">  {{country.employeeBand}}</div>  
+                  <div class="col-6">
+                    <span class="auto_Ellipses"> {{country.employeedu}}</span>
+                  </div>  
+                  <div class="col-6 text-right"><span> {{country.employeeloc}}</span></div>   
+                </div>
+              </div>
+          </ng-template>
+        </p-autoComplete> -->
+        <p-autoComplete [(ngModel)]="selectedBrandsNewAdvanced" [suggestions]="filteredBrandsNew" class="customautocomplete" (completeMethod)="filterBrands($event)" [size]="30"
+                        [minLength]="1" placeholder="Search by SAP ID/Name" panelStyleClass="panelClass" field="name" [dropdown]="false"> 
+ 
+            <ng-template let-employee pTemplate="item" class="autoEmprow">
+                <div class="employee-item">
+                  <div class="row autoEmprow">  
+                    <div class="col-6">
+                        <span class="auto_Ellipses auto_dark">
+                              {{employee.name}}  
+                        </span>
+                    </div>  
+                    <div class="col-6 text-right auto_dark"> 
+                        {{employee.employeeId}}
+                    </div>  
+                    <div class="col-6"> {{employee.employeePosition}}</div>   
+                    <div class="col-6 text-right">  {{employee.employeeBand}}</div>  
+                    <div class="col-6">
+                      <span class="auto_Ellipses"> {{employee.employeedu}}</span>
+                    </div>  
+                    <div class="col-6 text-right"><span> {{employee.employeeloc}}</span></div>   
+                  </div>
+                </div>
+            </ng-template>
+        </p-autoComplete>
+        
+      </div>
+      <div class="form-group cstmField padright-0">
+        <button (mouseenter)="play()" class="btnSearchHeader">
+          <!-- <span class="app-search"></span> -->
+          <ng-lottie [options]="lottieConfig" (animationCreated)="handleAnimation($event)" ></ng-lottie>
+
+          
+        </button>
+
+      </div>
+    </div>
+  </div>
+</section>

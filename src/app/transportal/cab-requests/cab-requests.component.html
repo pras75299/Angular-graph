@@ -1,0 +1,2177 @@
+<div style="width: 100%; display: block;">
+  <div class="whiteBox p15">
+    <div class="container">
+      <ul class="breadcrumbs">
+        <li class="pl-0"><a href="" [routerLink]="['/']"><i class="app-home"></i></a> / </li>
+        <li><a href="" [routerLink]="['/']">Cab Approval System</a> / </li>
+        <li class="fontBold">Cab Requests</li>
+      </ul> 
+    </div> 
+    <div class="divider"></div>
+    
+  </div>
+  <div class="container">
+
+    <!-- search header starts here -->
+    <app-cab-requests-header></app-cab-requests-header>
+    <!-- search header ends here -->
+
+    
+    <!-- raised request link and info legends ends here -->
+    <div class="raiseRequestLink">
+      <ul>
+        <li><a href="javascript:void('0')" class="linkRaiseReq" (click)="showPositionDialogRaiseReq()">Raise Request</a></li>
+        <li>
+          <a href="javascript:void('0')">
+            <span (mouseenter)="play2()" class="infoTooltipIcon" [popover]="popTemplate"
+            [adaptivePosition]="true"
+            placement="bottom"
+            [outsideClick]="true">
+              <ng-lottie [options]="lottieConfig2" (animationCreated)="handleAnimation2($event)"></ng-lottie>
+            </span>
+          </a>
+        </li>
+      </ul>
+      <ng-template #popTemplate>
+        <div class="popovermain-inside">
+          <h6>Trip Type</h6>
+          <ul class="w-100 tripsLegends">
+            <li class="d-block">
+              One Way Cab 
+              <span class="text-right boldIconArrow commonPopOverLottieIcon" (mouseenter)="play4()">
+                <ng-lottie [options]="lottieConfig4" (animationCreated)="handleAnimation4($event)"></ng-lottie>
+              </span>
+            </li>
+            <li class="d-block">
+              Return Cab 
+              <span class="text-right commonPopOverLottieIcon" (mouseenter)="play5()">
+                <ng-lottie [options]="lottieConfig5" (animationCreated)="handleAnimation5($event)"></ng-lottie>
+              </span>
+            </li>
+            <li class="d-block">
+              Entire Day 
+              <span class="text-right commonPopOverLottieIcon" (mouseenter)="play6()">
+                <ng-lottie [options]="lottieConfig6" (animationCreated)="handleAnimation6($event)"></ng-lottie>
+              </span>
+            </li>
+          </ul>
+          <h6>RM Approval</h6>
+          <ul class="w-100 approvalLegends">
+            <li class="d-block">Approved <span class="approvalGreen"></span></li>
+            <li class="d-block">Pending <span class="approvalYellow"></span></li>
+            <li class="d-block">Canceled <span class="approvalRed"></span></li>
+          </ul>
+        </div>
+      </ng-template>
+
+    </div>
+    <!-- raised request link and info legends ends here -->
+    <!-- tabs starts here -->
+    <mat-tab-group mat-align-tabs="start" [(selectedIndex)]="demo1TabIndex">            
+      <mat-tab>        
+        <ng-template mat-tab-label> Requests (<span>320</span>)</ng-template>
+        <div class="tabcontentmain">
+          <!-- inside tab filters starts here -->
+          <div class="row mx-0">
+            <ul class="filterInsideTab w-100">
+              <li>
+                <div class="form-group cstmField mb-0 iconBeforePlacement">
+                  <label class="sr-only">Request ID </label>
+                  <input type="text" pInputText placeholder="Request ID">
+                  <span class="app-search_icon"></span>
+                </div>
+              </li>
+              <li>
+                <div class="form-group cstmField mb-0">
+                  <label class="sr-only">Trip Type </label>
+                  <p-dropdown [options]="TripType" [(ngModel)]="selectedTripType" placeholder="Trip Type" optionLabel="name"></p-dropdown>                 
+                </div>
+              </li>
+              <li>
+                <div class="form-group cstmField mb-0">
+                  <label class="sr-only">RM Approval </label>
+                  <p-dropdown [options]="RmApproval" [(ngModel)]="selectedRmApproval" placeholder="RM Approval" optionLabel="name"></p-dropdown>                  
+                </div>
+              </li>
+              <li class="locationInput">
+                <div class="form-group cstmField mb-0">
+                  <label class="sr-only">Location </label>
+                  <p-dropdown [options]="Location" [(ngModel)]="selectedLocation" placeholder="Location" optionLabel="name"></p-dropdown>                   
+                </div>
+              </li>
+              <li>
+                <div class="form-group cstmField mb-0">
+                  <label class="sr-only">Distance </label>
+                  <p-dropdown [options]="Distance" [(ngModel)]="selectedDistance" placeholder="Distance" optionLabel="name"></p-dropdown>                 
+                </div>
+              </li>
+              <!-- <a href="javascript:void('0')" class="float-right excelicon" tooltip="Excel" placement="bottom"><span class="app-excel"></span></a> -->
+              <a href="javascript:void('0')" (mouseenter)="play3()" class="float-right excelicon" tooltip="Excel" placement="bottom">
+                <ng-lottie [options]="lottieConfig3" (animationCreated)="handleAnimation3($event)" ></ng-lottie>
+              </a>
+            </ul>
+            
+          </div>
+          <!-- inside tab filters ends here -->
+          <div class="example-container whiteBox boxShadowNone p-0 animated fadeIn">
+            <!-- table with checkboxs starts here -->
+            <table mat-table [dataSource]="dataSource">
+              <!-- Checkbox Column -->
+              <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef class="customcheckboxthwidth">
+                  <mat-checkbox (change)="$event ? masterToggle() : null;  changeEvent($event)"
+                                [checked]="selection.hasValue() && isAllSelected()"
+                                [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                [aria-label]="checkboxLabel()">
+                  </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row" class="customcheckboxthwidth">
+                  <mat-checkbox (click)="$event.stopPropagation()"
+                                (change)="$event ? selection.toggle(row) : null; changeEvent($event)"
+                                [checked]="selection.isSelected(row)"
+                                [aria-label]="checkboxLabel(row)">
+                  </mat-checkbox>
+                </td>
+              </ng-container>
+            
+              <!-- Name Column -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> 
+                  <div class="requestCard" *ngIf="element.name == 'extraCardOne'">
+                    <div class="row mx-0 marginbottom-16px">
+                      <div class="col-md-9 p-0">
+                        <div class="leftsidetextsection">                          
+                          <ul>
+                            <div class="flagS">
+                              <img src="assets/images/non-premium_banner.svg" alt="non-premium_banner"/>
+                              <span>Non-Premium</span>
+                            </div>
+                            <li class="firstLi"><span><span class="grey">Req ID:</span> 3676522 (L)</span></li>
+                            <li><span><span class="grey">Pickup Date:</span> 24-Feb-21 10:20 AM</span></li>
+                            <li><span><span class="grey">Transport Desk:</span> Noida SEZ-Tower2-U1-All Floors</span></li> 
+                            <li><span><span class="grey">Entity:</span> Tech</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-md-3 text-right pr-0">
+                        <div class="rightsideicononly">
+                          <ul>
+                            <li>
+                              <a href="javascript:void('0')" [ngClass]="statusCalendarIcon ? 'activeCancelIcon' : ''" (click)="onCalendarIconClickFn();">
+                                <span class="commonPopOverLottieIcon calendarIconSvg commonSizeLottieIcon" (mouseenter)="playCalendar()">
+                                  <ng-lottie [options]="lottieConfigCalendar" (animationCreated)="handleAnimationCalendar($event)" tooltip="Book"></ng-lottie>
+                                </span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="javascript:void('0')" [ngClass]="statusTransferIcon ? 'activeCancelIcon' : ''" (click)="onTransportIconClickFn()">
+                                <span (mouseenter)="playTransfer()" class="commonLottieIconGrey transferLottieIcon">
+                                  <ng-lottie [options]="lottieConfigTransferIcon" (animationCreated)="handleAnimationTransfer($event)" tooltip="Transfer"></ng-lottie>
+                                </span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="javascript:void('0')">
+                                <span (mouseenter)="playEmailIcon()" class="commonLottieIconGrey commonSizeLottieIcon">
+                                  <ng-lottie [options]="lottieConfigEmailIcon" (animationCreated)="handleAnimationEmailIcon($event)" tooltip="Email"></ng-lottie>
+                                </span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="javascript:void('0')" [ngClass]="statusCancelIcon ? 'activeCancelIcon' : ''" (click)="onCancelIconClickFn();">
+                                <span (mouseenter)="playCancelIcon()" class="commonLottieIconGrey">
+                                  <ng-lottie [options]="lottieConfigCancelIcon" (animationCreated)="handleAnimationCancelIcon($event)" tooltip="Cancel"></ng-lottie>
+                                </span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mx-0">
+                      <div class="col-md-6 paddright-20 pl-0"> 
+                        <div class="requestLeftCard">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">Nitin Soni (51680000) | E2</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                              <span> <i class="app-Arrow"></i> </span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="circle"></span> B - 2/3, ABC Building, Greater Noida, UP, Ghaziabad</p>
+                          <p class="requestLeftCardText"> <span class="location app-location-01"></span> HCL Technologies Ltd. Sector 127, Noida</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6 p-0" *ngIf="vendorCalendarDiv"> 
+                        <div class="requestRightCard">
+                          <div class="form-row mx-0">
+                            <div class="form-group cstmField col-md-12 autocompleteFromGroupSrOnly marBottom-16">
+                              <label class="sr-only">Vendor </label>
+                              <p-autoComplete [(ngModel)]="selectedVendorsNewAdvanced" [suggestions]="filteredVendorsNew" class="" (completeMethod)="filterVendorsNew($event)" [size]="30"
+                                  [minLength]="1" placeholder="Vendor" panelStyleClass="panelClass" field="name" [dropdown]="false">  
+                                  <ng-template let-vendorNew pTemplate="item">
+                                      <div class="vendorNew-item">
+                                        {{vendorNew.name}} 
+                                      </div>
+                                  </ng-template>
+                              </p-autoComplete>
+                              <span class="app-search_icon"></span>
+                            </div>
+
+                            <div class="form-group cstmField col-md-12 driverSearchInput mb-0 pr-0">
+                              <label class="sr-only">Driver </label>
+                              <p-autoComplete [(ngModel)]="selectedDriversNewAdvanced" [suggestions]="filteredDriversNew" class="" (completeMethod)="filterDriversNew($event)" [size]="30"
+                                  [minLength]="1" placeholder="Driver" panelStyleClass="panelClass" field="name" [dropdown]="false">  
+                                  <ng-template let-driverNew pTemplate="item">
+                                      <div class="driverNew-item">
+                                        {{driverNew.name}} 
+                                      </div>
+                                  </ng-template>
+                              </p-autoComplete>
+                              <span class="app-search_icon"></span>
+                            </div>
+                            <button *ngIf="bookButton" (click)="bookBtnFunction()" class="buttonBook"> <span class="app-check_icon-1"></span> Book</button>
+                            <button *ngIf="bookedButton" class="buttonBook bookedButton"> <span class="app-check_icon-1"></span> Booked</button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 p-0" *ngIf="cancelClickDiv"> 
+                        <div class="requestRightCard">
+                          <div class="form-row mx-0">
+                            <div class="form-group cstmField col-md-12 autocompleteFromGroupSrOnly marBottom-16">
+                              <label class="sr-only">Select Reasons </label>
+                              <p-dropdown [options]="CancelReasons" [(ngModel)]="selectedCancelReasons" placeholder="Select Reason" optionLabel="name"></p-dropdown> 
+                            </div>
+
+                            <div class="form-group cstmField col-md-12 driverSearchInput noPaddingCustom mb-0 pr-0">
+                              <label class="sr-only">Remarks </label>
+                              <input type="tel" placeholder="Enter your remarks..." pInputText>
+                            </div>
+                            <button *ngIf="cancelBtnBoolean" class="buttonBook" (click)="onCancelButtonClickFn()"><span class="app-check_icon-1"></span> Cancel</button>
+                            <button *ngIf="cancelledBtnBoolean" class="buttonBook bookedButton"><span class="app-check_icon-1"></span> Cancelled</button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 p-0" *ngIf="transportClickDiv"> 
+                        <div class="requestRightCard">
+                          <div class="form-row mx-0">
+                            <div class="form-group cstmField col-md-12 autocompleteFromGroupSrOnly marBottom-16">
+                              <label class="sr-only">Select Transport Desk</label>
+                              <p-dropdown [options]="SelectTransportDesk" [(ngModel)]="selectedSelectTransportDesk" placeholder="Select Transport Desk" optionLabel="name"></p-dropdown> 
+                            </div>
+
+                            <div class="form-group cstmField col-md-12 driverSearchInput noPaddingCustom mb-0 pr-0">
+                              <label class="sr-only">Remarks </label>
+                              <input type="tel" placeholder="Enter your remarks..." pInputText>
+                            </div>
+                            <button *ngIf="transferBtnBoolean" class="buttonBook" (click)="onTransportButtonClickFn()"><span class="app-check_icon-1"></span>  Transfer</button>
+                            <button *ngIf="transferledBtnBoolean" class="buttonBook bookedButton" (click)="onTransportButtonClickFn()"><span class="app-check_icon-1"></span>  Transferred</button>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  
+
+                  <div class="requestCard" *ngIf="element.name == 'CardOne'">
+                    <div class="row mx-0 marginbottom-16px">
+                      <div class="col-md-9 p-0">
+                        <div class="leftsidetextsection">                          
+                          <ul>
+                            <div class="flagS">
+                              <img src="assets/images/non-premium_banner.svg" alt="non-premium_banner"/>
+                              <span>Non-Premium</span>
+                            </div>
+                            <li class="firstLi"><span><span class="grey">Req ID:</span> 3676522 (L)</span></li>
+                            <li><span><span class="grey">Pickup Date:</span> 24-Feb-21 10:20 AM</span></li>
+                            <li><span><span class="grey">Transport Desk:</span> Noida SEZ-Tower2-U1-All Floors</span></li> 
+                            <li><span><span class="grey">Entity:</span> Tech</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-md-3 text-right pr-0">
+                        <div class="rightsideicononly">
+                          <ul>
+                            <li>
+                              <a href="javascript:void('0')">
+                                <span class="commonPopOverLottieIcon commonSizeLottieIcon" (mouseenter)="playCalendar()">
+                                  <ng-lottie [options]="lottieConfigCalendar" (animationCreated)="handleAnimationCalendar($event)" tooltip="Book"></ng-lottie>
+                                </span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="javascript:void('0')">
+                                <span (mouseenter)="playTransfer()" class="commonLottieIconGrey transferLottieIcon">
+                                  <ng-lottie [options]="lottieConfigTransferIcon" (animationCreated)="handleAnimationTransfer($event)" tooltip="Transfer"></ng-lottie>
+                                </span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="javascript:void('0')">
+                                <span (mouseenter)="playEmailIcon()" class="commonLottieIconGrey commonSizeLottieIcon">
+                                  <ng-lottie [options]="lottieConfigEmailIcon" (animationCreated)="handleAnimationEmailIcon($event)" tooltip="Email"></ng-lottie>
+                                </span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="javascript:void('0')">
+                                <span (mouseenter)="playCancelIcon()" class="commonLottieIconGrey">
+                                  <ng-lottie [options]="lottieConfigCancelIcon" (animationCreated)="handleAnimationCancelIcon($event)" tooltip="Cancel"></ng-lottie>
+                                </span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mx-0">
+                      <div class="col-md-6 paddright-20 pl-0"> 
+                        <div class="requestLeftCard">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">Nitin Soni (51680000) | E2</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                              <span> <i class="app-Arrow"></i> </span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="circle"></span> B - 2/3, ABC Building, Greater Noida, UP, Ghaziabad</p>
+                          <p class="requestLeftCardText"> <span class="location app-location-01"></span> HCL Technologies Ltd. Sector 127, Noida</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6 p-0"> 
+                        <div class="requestRightCard">
+                          <div class="form-row mx-0">
+                            <div class="form-group cstmField col-md-12 autocompleteFromGroupSrOnly marBottom-16">
+                              <label class="sr-only">Vendor </label>
+                              <!-- <p-autoComplete [(ngModel)]="selectedVendorsAdvanced" class="" [suggestions]="filteredVendors" placeholder="Vendor" (completeMethod)="filterVendors($event)" field="name" [dropdown]="false">
+                                <ng-template let-vendor pTemplate="item">
+                                    <div class="country-item">
+                                      {{vendor.name}} 
+                                    </div>
+                                </ng-template>
+                              </p-autoComplete> -->
+                              <p-autoComplete [(ngModel)]="selectedVendorsNewAdvanced" [suggestions]="filteredVendorsNew" class="" (completeMethod)="filterVendorsNew($event)" [size]="30"
+                                  [minLength]="1" placeholder="Vendor" panelStyleClass="panelClass" field="name" [dropdown]="false">  
+                                  <ng-template let-vendorNew pTemplate="item">
+                                      <div class="vendorNew-item">
+                                        {{vendorNew.name}} 
+                                      </div>
+                                  </ng-template>
+                              </p-autoComplete>
+                              <span class="app-search_icon"></span>
+                            </div>
+
+                            <div class="form-group cstmField col-md-12 driverSearchInput mb-0 pr-0">
+                              <label class="sr-only">Driver </label>
+                              <p-autoComplete [(ngModel)]="selectedDriversNewAdvanced" [suggestions]="filteredDriversNew" class="" (completeMethod)="filterDriversNew($event)" [size]="30"
+                                  [minLength]="1" placeholder="Driver" panelStyleClass="panelClass" field="name" [dropdown]="false">  
+                                  <ng-template let-driverNew pTemplate="item">
+                                      <div class="driverNew-item">
+                                        {{driverNew.name}} 
+                                      </div>
+                                  </ng-template>
+                              </p-autoComplete>
+                              <span class="app-search_icon"></span>
+                            </div>
+                            <button *ngIf="bookButton" (click)="bookBtnFunction()" class="buttonBook"> <span class="app-check_icon-1"></span> Book</button>
+                            <button *ngIf="bookedButton" class="buttonBook bookedButton"> <span class="app-check_icon-1"></span> Booked</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="requestCard" *ngIf="element.name == 'CardTwo'">
+                    <div class="row mx-0 marginbottom-16px">
+                      <div class="col-md-9 p-0">
+                        <div class="leftsidetextsection">                          
+                          <ul>
+                            <div class="flagS">
+                              <img src="assets/images/non-premium_banner.svg" alt="non-premium_banner"/>
+                              <span>Non-Premium</span>
+                            </div>
+                            <li class="firstLi pending"><span><span class="grey">Req ID:</span> 3676522 (L)</span></li>
+                            <li><span><span class="grey">Pickup Date:</span> 24-Feb-21 10:20 AM</span></li>
+                            <li><span><span class="grey">Transport Desk:</span> Noida SEZ-Tower2-U1-All Floors</span></li> 
+                            <li><span><span class="grey">Entity:</span> Tech</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-md-3 text-right pr-0">
+                        <div class="rightsideicononly">
+                          <ul>
+                            <li>
+                              <a href="javascript:void('0')">
+                                <span class="commonPopOverLottieIcon commonSizeLottieIcon" (mouseenter)="playCalendar1()">
+                                  <ng-lottie [options]="lottieConfigCalendar" (animationCreated)="handleAnimationCalendar1($event)" tooltip="Book"></ng-lottie>
+                                </span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="javascript:void('0')">
+                                <span (mouseenter)="playTransfer1()" class="commonLottieIconGrey transferLottieIcon">
+                                  <ng-lottie [options]="lottieConfigTransferIcon" (animationCreated)="handleAnimationTransfer1($event)" tooltip="Transfer"></ng-lottie>
+                                </span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="javascript:void('0')">
+                                <span (mouseenter)="playEmailIcon1()" class="commonLottieIconGrey commonSizeLottieIcon">
+                                  <ng-lottie [options]="lottieConfigEmailIcon" (animationCreated)="handleAnimationEmailIcon1($event)" tooltip="Email"></ng-lottie>
+                                </span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="javascript:void('0')">
+                                <span (mouseenter)="playCancelIcon1()" class="commonLottieIconGrey">
+                                  <ng-lottie [options]="lottieConfigCancelIcon" (animationCreated)="handleAnimationCancelIcon1($event)" tooltip="Cancel"></ng-lottie>
+                                </span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mx-0">
+                      <div class="col-md-6 paddright-20 pl-0"> 
+                        <div class="requestLeftCard">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">Nitin Soni (51680000) | E2</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                              <span> <i class="app-Arrow"></i> </span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="circle"></span> B - 2/3, ABC Building, Greater Noida, UP, Ghaziabad</p>
+                          <p class="requestLeftCardText"> <span class="location app-location-01"></span> HCL Technologies Ltd. Sector 127, Noida</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6 p-0 d-none"> 
+                        <div class="requestRightCard">
+                          <div class="form-row mx-0">
+                            <div class="form-group cstmField col-md-12 autocompleteFromGroupSrOnly marBottom-16">
+                              <label class="sr-only">Vendor </label>
+                              <p-autoComplete [(ngModel)]="selectedCountryAdvanced" class="" [suggestions]="filteredCountries" placeholder="Vendor" (completeMethod)="filterCountry($event)" field="name" [dropdown]="false">
+                                <ng-template let-country pTemplate="item">
+                                    <div class="country-item">
+                                      {{country.name}} 
+                                    </div>
+                                </ng-template>
+                              </p-autoComplete>
+                              <span class="app-search_icon"></span>
+                            </div>
+
+                            <div class="form-group cstmField col-md-12 driverSearchInput mb-0 pr-0">
+                              <label class="sr-only">Driver </label>
+                              <input type="text" pInputText placeholder="Driver">
+                              <span class="app-search_icon"></span>
+                            </div>
+                            <button *ngIf="bookButton" (click)="bookBtnFunction()" class="buttonBook"> <span class="app-check_icon-1"></span> Book</button>
+                            <button *ngIf="bookedButton" class="buttonBook bookedButton"> <span class="app-check_icon-1"></span> Booked</button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 p-0"> 
+                        <div class="requestRightCard multipleFields">
+                          <div class="form-row mx-0">
+                            <div class="form-group cstmField col-md-6 marBottom-16 paddright16 iconVendorAndDriverCommon">
+                              <label class="sr-only">Vendor </label>
+                              <p-autoComplete [(ngModel)]="selectedVendorsNewAdvanced" [suggestions]="filteredVendorsNew" class="" (completeMethod)="filterVendorsNew($event)" [size]="30"
+                                  [minLength]="1" placeholder="Vendor" panelStyleClass="panelClass" field="name" [dropdown]="false">  
+                                  <ng-template let-vendorNew pTemplate="item">
+                                      <div class="vendorNew-item">
+                                        {{vendorNew.name}} 
+                                      </div>
+                                  </ng-template>
+                              </p-autoComplete>
+                              <span class="app-search_icon"></span>
+                            </div>
+                            <div class="form-group cstmField col-md-6 mb-0 iconVendorAndDriverCommon">
+                              <label class="sr-only">Driver </label>
+                              <p-autoComplete [(ngModel)]="selectedDriversNewAdvanced" [suggestions]="filteredDriversNew" class="" (completeMethod)="filterDriversNew($event)" [size]="30"
+                                  [minLength]="1" placeholder="Driver" panelStyleClass="panelClass" field="name" [dropdown]="false">  
+                                  <ng-template let-driverNew pTemplate="item">
+                                      <div class="driverNew-item">
+                                        {{driverNew.name}} 
+                                      </div>
+                                  </ng-template>
+                              </p-autoComplete>
+                              <span class="app-search_icon"></span>
+                            </div>
+                            <div class="form-group cstmField col-md-3 mb-0 paddright16">
+                              <label class="sr-only">Car Number </label>
+                              <input type="text" class="form-control" placeholder="Car Number" value="DL 5S XXXX">
+                            </div>
+
+                            <div class="form-group cstmField col-md-3 mb-0 paddright16">
+                              <label class="sr-only">Car Type </label>
+                              <input type="text" class="form-control" placeholder="Car Type" value="Petrol">
+                            </div>
+
+                            <div class="form-group cstmField col-md-3 mb-0 pr-0 minwidth155">
+                              <label class="sr-only">Driver Number </label>
+                              <input type="text" class="form-control" placeholder="Driver Number" value="98XXXXXXXX">
+                            </div>
+                            
+                            <button class="buttonBook"> <span class="app-check_icon-1"></span> Book</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="requestCard" *ngIf="element.name == 'CardThree'">
+                    <div class="row mx-0 marginbottom-16px">
+                      <div class="col-md-9 p-0">
+                        <div class="leftsidetextsection">                          
+                          <ul>
+                            <div class="flagS luxuryText">
+                              <img src="assets/images/luxury_cab_banner.svg" alt="luxury_cab_banner"/>
+                              <span>Luxury</span>
+                            </div>
+                            <li class="firstLi pending"><span><span class="grey">Req ID:</span> 3676522 (L)</span></li>
+                            <li><span><span class="grey">Pickup Date:</span> 24-Feb-21 10:20 AM</span></li>
+                            <li><span><span class="grey">Transport Desk:</span> Noida SEZ-Tower2-U1-All Floors</span></li> 
+                            <li><span><span class="grey">Entity:</span> Tech</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-md-3 text-right pr-0">
+                        <div class="rightsideicononly">
+                          <ul>
+                            <li>
+                              <a href="javascript:void('0')">
+                                <span class="commonPopOverLottieIcon commonSizeLottieIcon" (mouseenter)="playCalendar2()">
+                                  <ng-lottie [options]="lottieConfigCalendar" (animationCreated)="handleAnimationCalendar($event)" tooltip="Book"></ng-lottie>
+                                </span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="javascript:void('0')">
+                                <span (mouseenter)="playTransfer2()" class="commonLottieIconGrey transferLottieIcon">
+                                  <ng-lottie [options]="lottieConfigTransferIcon" (animationCreated)="handleAnimationTransfer($event)" tooltip="Transfer"></ng-lottie>
+                                </span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="javascript:void('0')">
+                                <span (mouseenter)="playEmailIcon2()" class="commonLottieIconGrey commonSizeLottieIcon">
+                                  <ng-lottie [options]="lottieConfigEmailIcon" (animationCreated)="handleAnimationEmailIcon($event)" tooltip="Email"></ng-lottie>
+                                </span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="javascript:void('0')">
+                                <span (mouseenter)="playCancelIcon2()" class="commonLottieIconGrey">
+                                  <ng-lottie [options]="lottieConfigCancelIcon" (animationCreated)="handleAnimationCancelIcon($event)" tooltip="Cancel"></ng-lottie>
+                                </span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mx-0">
+                      <div class="col-md-6 paddright-20 pl-0"> 
+                        <div class="requestLeftCard">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">Nitin Soni (51680000) | E2</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                              <span> <i class="app-Arrow"></i> </span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="circle"></span> B - 2/3, ABC Building, Greater Noida, UP, Ghaziabad</p>
+                          <p class="requestLeftCardText"> <span class="location app-location-01"></span> HCL Technologies Ltd. Sector 127, Noida</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6 p-0"> 
+                        <div class="requestRightCard">
+                          <div class="form-row mx-0">
+                            <div class="form-group cstmField col-md-12 autocompleteFromGroupSrOnly marBottom-16">
+                              <label class="sr-only">Vendor </label>
+                              <!-- <p-autoComplete [(ngModel)]="selectedVendorsAdvanced" class="" [suggestions]="filteredVendors" placeholder="Vendor" (completeMethod)="filterVendors($event)" field="name" [dropdown]="false">
+                                <ng-template let-vendor pTemplate="item">
+                                    <div class="country-item">
+                                      {{vendor.name}} 
+                                    </div>
+                                </ng-template>
+                              </p-autoComplete> -->
+                              <p-autoComplete [(ngModel)]="selectedVendorsNewAdvanced" [suggestions]="filteredVendorsNew" class="" (completeMethod)="filterVendorsNew($event)" [size]="30"
+                                  [minLength]="1" placeholder="Vendor" panelStyleClass="panelClass" field="name" [dropdown]="false">  
+                                  <ng-template let-vendorNew pTemplate="item">
+                                      <div class="vendorNew-item">
+                                        {{vendorNew.name}} 
+                                      </div>
+                                  </ng-template>
+                              </p-autoComplete>
+                              <span class="app-search_icon"></span>
+                            </div>
+
+                            <div class="form-group cstmField col-md-12 driverSearchInput mb-0 pr-0">
+                              <label class="sr-only">Driver </label>
+                              <p-autoComplete [(ngModel)]="selectedDriversNewAdvanced" [suggestions]="filteredDriversNew" class="" (completeMethod)="filterDriversNew($event)" [size]="30"
+                                  [minLength]="1" placeholder="Driver" panelStyleClass="panelClass" field="name" [dropdown]="false">  
+                                  <ng-template let-driverNew pTemplate="item">
+                                      <div class="driverNew-item">
+                                        {{driverNew.name}} 
+                                      </div>
+                                  </ng-template>
+                              </p-autoComplete>
+                              <span class="app-search_icon"></span>
+                            </div>
+                            <button *ngIf="bookButton" (click)="bookBtnFunction()" class="buttonBook"> <span class="app-check_icon-1"></span> Book</button>
+                            <button *ngIf="bookedButton" class="buttonBook bookedButton"> <span class="app-check_icon-1"></span> Booked</button>
+                          </div>
+                        </div>
+                      </div>
+
+                      
+                    </div>
+                  </div>
+
+
+                  
+                  
+                </td>
+              </ng-container>
+            
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator #MatPaginator1 [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>  
+            <!-- table with checkboxs ends here -->
+            <div class="glBtn customButtonSection">
+              <button type="button" class="btn secondary-outline-button commonGreyBtnNew border-radius2px" (click)="showPositionDialog()" [disabled]="clicked">Merge</button>
+            </div>
+
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label> Booked Requests (<span>01</span>)</ng-template>
+        <div class="tabcontentmain">
+          <!-- inside tab filters starts here -->
+          <div class="row mx-0">
+            <ul class="filterInsideTab w-100">
+              <li>
+                <div class="form-group cstmField mb-0 iconBeforePlacement">
+                  <label class="sr-only">Request ID </label>
+                  <input type="text" pInputText placeholder="Request ID">
+                  <span class="app-search_icon"></span>
+                </div>
+              </li>
+              <li>
+                <div class="form-group cstmField mb-0">
+                  <label class="sr-only">Trip Type </label>
+                  <p-dropdown [options]="TripType" [(ngModel)]="selectedTripType" placeholder="Trip Type" optionLabel="name"></p-dropdown>                 
+                </div>
+              </li>
+              <li>
+                <div class="form-group cstmField mb-0">
+                  <label class="sr-only">Booking Type </label>
+                  <p-dropdown [options]="BookingType" [(ngModel)]="selectedBookingType" placeholder="Booking Type" optionLabel="name"></p-dropdown>                 
+                </div>
+              </li>
+              <li>
+                <div class="form-group cstmField mb-0">
+                  <label class="sr-only">RM Approval </label>
+                  <p-dropdown [options]="RmApproval" [(ngModel)]="selectedRmApproval" placeholder="RM Approval" optionLabel="name"></p-dropdown>                  
+                </div>
+              </li>
+              <li class="locationInput">
+                <div class="form-group cstmField mb-0">
+                  <label class="sr-only">Location </label>
+                  <p-dropdown [options]="Location" [(ngModel)]="selectedLocation" placeholder="Location" optionLabel="name"></p-dropdown>                   
+                </div>
+              </li>
+              <li>
+                <div class="form-group cstmField mb-0">
+                  <label class="sr-only">Distance </label>
+                  <p-dropdown [options]="Distance" [(ngModel)]="selectedDistance" placeholder="Distance" optionLabel="name"></p-dropdown>                 
+                </div>
+              </li>
+              <a href="javascript:void('0')" (mouseenter)="play3()" class="float-right excelicon" tooltip="Excel" placement="bottom">
+                <ng-lottie [options]="lottieConfig3" (animationCreated)="handleAnimation3($event)" ></ng-lottie>
+              </a>
+            </ul>
+
+            
+          </div>
+          <!-- inside tab filters ends here -->
+          <div class="example-container whiteBox boxShadowNone p-0 animated fadeIn">
+            <!-- table with checkboxs starts here -->
+            <table mat-table [dataSource]="dataSourceOne">
+              <!-- Checkbox Column -->
+              <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef class="customcheckboxthwidth">
+                  <mat-checkbox (change)="$event ? masterToggleOne() : null;  changeEventBooked($event)"
+                                [checked]="selectionOne.hasValue() && isAllSelectedOne()"
+                                [indeterminate]="selectionOne.hasValue() && !isAllSelectedOne()"
+                                [aria-label]="checkboxLabelOne()">
+                  </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row" class="customcheckboxthwidth">
+                  <mat-checkbox (click)="$event.stopPropagation()"
+                                (change)="$event ? selectionOne.toggle(row) : null;  changeEventBooked($event)"
+                                [checked]="selectionOne.isSelected(row)"
+                                [aria-label]="checkboxLabelOne(row)">
+                  </mat-checkbox>
+                </td>
+              </ng-container>
+            
+              <!-- Name Column -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> 
+                  
+                  <div class="requestCard" id="component1" *ngIf="element.name == 'CardOne'">
+                    <div class="row mx-0 marginbottom-16px">
+                      <div class="col-md-9 p-0">
+                        <div class="leftsidetextsection">                          
+                          <ul>
+                            <div class="flagS">
+                              <img src="assets/images/non-premium_banner.svg" alt="non-premium_banner"/>
+                              <span>Non-Premium</span>
+                            </div>
+                            <li class="firstLi"><span><span class="grey">Trip ID:</span> 3676522 (L)</span></li>
+                            <li><span><span class="grey">Pickup Date:</span> 24-Feb-21 10:20 AM</span></li>
+                            <li><span><span class="grey">Transport Desk:</span> Noida SEZ-Tower2-U1-All Floors</span></li> 
+                            <li><span><span class="grey">Entity:</span> Tech</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-md-3 text-right pr-0">
+                        <div class="rightsideicononly">
+                          <ul>
+                            <li><a href="javascript:void('0')" (click)="printComponent('component1')" tooltip="Print"><span class="app-printer_icon"></span></a></li>
+                            <li><a href="javascript:void('0')" tooltip="Edit"><span class="hcl-edit"></span></a></li>
+
+                            <li>
+                              <a href="javascript:void('0')">
+                                <span (mouseenter)="playTransfer1()" class="commonLottieIconGrey transferLottieIcon">
+                                  <ng-lottie [options]="lottieConfigTransferIcon" (animationCreated)="handleAnimationTransfer($event)" tooltip="Transfer"></ng-lottie>
+                                </span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="javascript:void('0')">
+                                <span (mouseenter)="playCancelIcon1()" class="commonLottieIconGrey">
+                                  <ng-lottie [options]="lottieConfigCancelIcon" (animationCreated)="handleAnimationCancelIcon($event)" tooltip="Cancel"></ng-lottie>
+                                </span>
+                              </a>
+                            </li>
+
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mx-0">
+                      <div class="col-md-6 paddright-20 pl-0 mb20"> 
+                        <div class="requestLeftCard">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">3676522 | Nitin Soni (51680000) | E2</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="circle"></span> B - 2/3, ABC Building, Greater Noida, UP, Ghaziabad</p>
+                          <p class="requestLeftCardText"> <span class="location app-location-01"></span> HCL Technologies Ltd. Sector 127, Noida</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6 p-0 mb20">
+                        <div class="requestLeftCard">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">3676522 | Nitin Soni (51680000) | E2</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="circle"></span> B - 2/3, ABC Building, Greater Noida, UP, Ghaziabad</p>
+                          <p class="requestLeftCardText"> <span class="location app-location-01"></span> HCL Technologies Ltd. Sector 127, Noida</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6 paddright-20 pl-0">
+                        <div class="requestLeftCard">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">3676522 | Nitin Soni (51680000) | E2</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="circle"></span> B - 2/3, ABC Building, Greater Noida, UP, Ghaziabad</p>
+                          <p class="requestLeftCardText"> <span class="location app-location-01"></span> HCL Technologies Ltd. Sector 127, Noida</p>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 p-0"> 
+                        <div class="requestLeftCard customCardBackground">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">John Doe</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                              <span> <i class="app-Arrow"></i> </span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="app-vendor_icon"></span> Carzonrent. Pvt. Ltd <span class="float-right carNumberText">DL XX S56XX</span></p>
+                          <p class="requestLeftCardText"> <span class="app-driver_icon"></span> Transport Executive Name <span class="float-right carNameText">Wagon R | Petrol</span></p>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="requestCard" *ngIf="element.name == 'CardTwo'">
+                    <div class="row mx-0 marginbottom-16px">
+                      <div class="col-md-9 p-0">
+                        <div class="leftsidetextsection">                          
+                          <ul>
+                            <div class="flagS">
+                              <img src="assets/images/non-premium_banner.svg" alt="non-premium_banner"/>
+                              <span>Non-Premium</span>
+                            </div>
+                            <li class="firstLi pending"><span><span class="grey">Trip ID:</span> 3676522 (L)</span></li>
+                            <li><span><span class="grey">Pickup Date:</span> 24-Feb-21 10:20 AM</span></li>
+                            <li><span><span class="grey">Transport Desk:</span> Noida SEZ-Tower2-U1-All Floors</span></li> 
+                            <li><span><span class="grey">Entity:</span> Tech</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-md-3 text-right pr-0">
+                        <div class="rightsideicononly">
+                          <ul>
+                            <li><a href="javascript:void('0')" tooltip="Print"><span class="app-printer_icon"></span></a></li>
+                            <li><a href="javascript:void('0')" tooltip="Edit" (click)="editIconFunction()"><span class="hcl-edit"></span></a></li>
+                            <li><a href="javascript:void('0')" tooltip="Transfer"><span class="app-transfer_icon"></span></a></li>                            
+                            <li><a href="javascript:void('0')" tooltip="Cancel"><span class="app-cancel_icon"></span></a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mx-0">
+                      <div class="col-md-6 paddright-20 pl-0 mb20"> 
+                        <div class="requestLeftCard">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">3676522 | Nitin Soni (51680000) | E2</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="circle"></span> B - 2/3, ABC Building, Greater Noida, UP, Ghaziabad</p>
+                          <p class="requestLeftCardText"> <span class="location app-location-01"></span> HCL Technologies Ltd. Sector 127, Noida</p>
+                        </div>
+                      </div>                      
+
+                      <div *ngIf="driverDetailsDiv" class="col-md-6 p-0"> 
+                        <div class="requestLeftCard customCardBackground">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">John Doe</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                              <span> <i class="app-Arrow"></i> </span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="app-vendor_icon"></span> Carzonrent. Pvt. Ltd <span class="float-right carNumberText">DL XX S56XX</span></p>
+                          <p class="requestLeftCardText"> <span class="app-driver_icon"></span> Transport Executive Name <span class="float-right carNameText">Wagon R | Petrol</span></p>
+                        </div>
+                      </div>
+
+                      <div *ngIf="driverFormDiv" class="col-md-6 p-0"> 
+                        <div class="requestRightCard multipleFields">
+                          <div class="form-row mx-0">
+                            <div class="form-group cstmField col-md-6 marBottom-16 paddright16 iconVendorAndDriverCommon">
+                              <label class="sr-only">Vendor </label>
+                              <p-autoComplete [(ngModel)]="selectedVendorsNewAdvanced" [suggestions]="filteredVendorsNew" class="" (completeMethod)="filterVendorsNew($event)" [size]="30"
+                                  [minLength]="1" placeholder="Vendor" panelStyleClass="panelClass" field="name" [dropdown]="false">  
+                                  <ng-template let-vendorNew pTemplate="item">
+                                      <div class="vendorNew-item">
+                                        {{vendorNew.name}} 
+                                      </div>
+                                  </ng-template>
+                              </p-autoComplete>
+                              <span class="app-search_icon"></span>
+                            </div>
+                            <div class="form-group cstmField col-md-6 mb-0 iconVendorAndDriverCommon">
+                              <label class="sr-only">Driver </label>
+                              <p-autoComplete [(ngModel)]="selectedDriversNewAdvanced" [suggestions]="filteredDriversNew" class="" (completeMethod)="filterDriversNew($event)" [size]="30"
+                                  [minLength]="1" placeholder="Driver" panelStyleClass="panelClass" field="name" [dropdown]="false">  
+                                  <ng-template let-driverNew pTemplate="item">
+                                      <div class="driverNew-item">
+                                        {{driverNew.name}} 
+                                      </div>
+                                  </ng-template>
+                              </p-autoComplete>
+                              <span class="app-search_icon"></span>
+                            </div>
+                            <div class="form-group cstmField col-md-3 mb-0 paddright16 minwidth158">
+                              <label class="sr-only">Car Number </label>
+                              <input type="text" class="form-control" placeholder="Car Number" value="DL 5S XXXX">
+                            </div>
+
+                            <div class="form-group cstmField col-md-3 mb-0 paddright16 minwidth120">
+                              <label class="sr-only">Car Type </label>
+                              <input type="text" class="form-control" placeholder="Car Type" value="Petrol">
+                            </div>
+
+                            <div class="form-group cstmField col-md-3 mb-0 paddright16 minwidth120">
+                              <label class="sr-only">Driver Number </label>
+                              <input type="text" class="form-control" placeholder="Driver Number" value="98XXXXXXXX">
+                            </div>
+                            <div class="form-group cstmField pr-0 checkboxCstmField mb-0">
+                              <input type="checkbox" class="cstmChekBox" id="checkBoxInput1">
+                              <label for="checkBoxInput1" class="textC">
+                                  Sms
+                              </label>
+                            </div>
+                            
+                            <button class="buttonBook" (click)="onSubmitDriverForm()"> <span class="app-check_icon-1"></span> Submit</button>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="requestCard" *ngIf="element.name == 'CardThree'">
+                    <div class="row mx-0 marginbottom-16px">
+                      <div class="col-md-9 p-0">
+                        <div class="leftsidetextsection">                          
+                          <ul>
+                            <div class="flagS">
+                              <img src="assets/images/non-premium_banner.svg" alt="non-premium_banner"/>
+                              <span>Non-Premium</span>
+                            </div>
+                            <li class="firstLi pending"><span><span class="grey">Trip ID:</span> 3676522 (L)</span></li>
+                            <li><span><span class="grey">Pickup Date:</span> 24-Feb-21 10:20 AM</span></li>
+                            <li><span><span class="grey">Transport Desk:</span> Noida SEZ-Tower2-U1-All Floors</span></li> 
+                            <li><span><span class="grey">Entity:</span> Tech</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-md-3 text-right pr-0">
+                        <div class="rightsideicononly">
+                          <ul>
+                            <li><a href="javascript:void('0')" tooltip="Print"><span class="app-printer_icon"></span></a></li>
+                            <li><a href="javascript:void('0')" tooltip="Edit" (click)="editIconFunction()"><span class="hcl-edit"></span></a></li>
+                            <li><a href="javascript:void('0')" tooltip="Transfer"><span class="app-transfer_icon"></span></a></li>                            
+                            <li><a href="javascript:void('0')" tooltip="Cancel"><span class="app-cancel_icon"></span></a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mx-0">
+                      <div class="col-md-6 paddright-20 pl-0 mb20"> 
+                        <div class="requestLeftCard">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">3676522 | Nitin Soni (51680000) | E2</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="circle"></span> B - 2/3, ABC Building, Greater Noida, UP, Ghaziabad</p>
+                          <p class="requestLeftCardText"> <span class="location app-location-01"></span> HCL Technologies Ltd. Sector 127, Noida</p>
+                        </div>
+                      </div>                      
+
+                      <div *ngIf="driverDetailsDiv" class="col-md-6 p-0"> 
+                        <div class="requestLeftCard customCardBackground">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">John Doe</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                              <span> <i class="app-Arrow"></i> </span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="app-vendor_icon"></span> Carzonrent. Pvt. Ltd <span class="float-right carNumberText">DL XX S56XX</span></p>
+                          <p class="requestLeftCardText"> <span class="app-driver_icon"></span> Transport Executive Name <span class="float-right carNameText">Wagon R | Petrol</span></p>
+                        </div>
+                      </div>
+
+                      <div *ngIf="driverFormDiv" class="col-md-6 p-0"> 
+                        <div class="requestRightCard multipleFields">
+                          <div class="form-row mx-0">
+                            <div class="form-group cstmField col-md-6 marBottom-16 paddright16 iconVendorAndDriverCommon">
+                              <label class="sr-only">Vendor </label>
+                              <p-autoComplete [(ngModel)]="selectedVendorsNewAdvanced" [suggestions]="filteredVendorsNew" class="" (completeMethod)="filterVendorsNew($event)" [size]="30"
+                                  [minLength]="1" placeholder="Vendor" panelStyleClass="panelClass" field="name" [dropdown]="false">  
+                                  <ng-template let-vendorNew pTemplate="item">
+                                      <div class="vendorNew-item">
+                                        {{vendorNew.name}} 
+                                      </div>
+                                  </ng-template>
+                              </p-autoComplete>
+                              <span class="app-search_icon"></span>
+                            </div>
+                            <div class="form-group cstmField col-md-6 mb-0 iconVendorAndDriverCommon">
+                              <label class="sr-only">Driver </label>
+                              <p-autoComplete [(ngModel)]="selectedDriversNewAdvanced" [suggestions]="filteredDriversNew" class="" (completeMethod)="filterDriversNew($event)" [size]="30"
+                                  [minLength]="1" placeholder="Driver" panelStyleClass="panelClass" field="name" [dropdown]="false">  
+                                  <ng-template let-driverNew pTemplate="item">
+                                      <div class="driverNew-item">
+                                        {{driverNew.name}} 
+                                      </div>
+                                  </ng-template>
+                              </p-autoComplete>
+                              <span class="app-search_icon"></span>
+                            </div>
+                            <div class="form-group cstmField col-md-3 mb-0 paddright16 minwidth158">
+                              <label class="sr-only">Car Number </label>
+                              <input type="text" class="form-control" placeholder="Car Number" value="DL 5S XXXX">
+                            </div>
+
+                            <div class="form-group cstmField col-md-3 mb-0 paddright16 minwidth120">
+                              <label class="sr-only">Car Type </label>
+                              <input type="text" class="form-control" placeholder="Car Type" value="Petrol">
+                            </div>
+
+                            <div class="form-group cstmField col-md-3 mb-0 paddright16 minwidth120">
+                              <label class="sr-only">Driver Number </label>
+                              <input type="text" class="form-control" placeholder="Driver Number" value="98XXXXXXXX">
+                            </div>
+                            <div class="form-group cstmField pr-0 checkboxCstmField mb-0">
+                              <input type="checkbox" class="cstmChekBox" id="checkBoxInput1">
+                              <label for="checkBoxInput1" class="textC">
+                                  Sms
+                              </label>
+                            </div>
+                            
+                            <button class="buttonBook" (click)="onSubmitDriverForm()"> <span class="app-check_icon-1"></span> Submit</button>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  
+                </td>
+              </ng-container>
+            
+              <tr mat-header-row *matHeaderRowDef="displayedColumnsOne"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumnsOne;">
+              </tr>
+            </table>
+            <mat-paginator #MatPaginator2 [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>  
+            <!-- table with checkboxs ends here -->
+            <div class="glBtn customButtonSection">
+              <button type="button" class="btn secondary-outline-button commonGreyBtnNew border-radius2px" [routerLink]="['/regularCabSheet']" [disabled]="clickedBook">Print</button>
+            </div>
+
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab> 
+        <ng-template mat-tab-label> My Requests (<span>01</span>)</ng-template>
+        <!-- My requests starts here-->
+        <div class="tabcontentmain">
+          <!-- inside tab filters starts here -->
+          <div class="row mx-0">
+            <ul class="filterInsideTab w-100">
+              <li>
+                <div class="form-group cstmField mb-0 iconBeforePlacement">
+                  <label class="sr-only">Request ID </label>
+                  <input type="text" placeholder="Request ID" pInputText>
+                  <span class="app-search_icon"></span>
+                </div>
+              </li>
+              <li>
+                <div class="form-group cstmField mb-0">
+                  <label class="sr-only">Trip Type </label>
+                  <p-dropdown [options]="TripType" [(ngModel)]="selectedTripType" placeholder="Trip Type" optionLabel="name"></p-dropdown>                 
+                </div>
+              </li>
+              <li>
+                <div class="form-group cstmField mb-0">
+                  <label class="sr-only">Booking Type </label>
+                  <p-dropdown [options]="BookingType" [(ngModel)]="selectedBookingType" placeholder="Booking Type" optionLabel="name"></p-dropdown>                 
+                </div>
+              </li>
+              <li>
+                <div class="form-group cstmField mb-0">
+                  <label class="sr-only">RM Approval </label>
+                  <p-dropdown [options]="RmApproval" [(ngModel)]="selectedRmApproval" placeholder="RM Approval" optionLabel="name"></p-dropdown>                  
+                </div>
+              </li>
+              <li class="locationInput">
+                <div class="form-group cstmField mb-0">
+                  <label class="sr-only">Location </label>
+                  <p-dropdown [options]="Location" [(ngModel)]="selectedLocation" placeholder="Location" optionLabel="name"></p-dropdown>                   
+                </div>
+              </li>
+              <li>
+                <div class="form-group cstmField mb-0">
+                  <label class="sr-only">Distance </label>
+                  <p-dropdown [options]="Distance" [(ngModel)]="selectedDistance" placeholder="Distance" optionLabel="name"></p-dropdown>                 
+                </div>
+              </li>
+              <a href="javascript:void('0')" (mouseenter)="play3()" class="float-right excelicon" tooltip="Excel" placement="bottom">
+                <ng-lottie [options]="lottieConfig3" (animationCreated)="handleAnimation3($event)" ></ng-lottie>
+              </a>
+            </ul>
+
+            
+          </div>
+          <!-- inside tab filters ends here -->
+          <div class="example-container whiteBox boxShadowNone p-0 animated fadeIn">
+            <!-- table with checkboxs starts here -->
+            <table mat-table [dataSource]="dataSourceTwo">
+              <!-- Checkbox Column -->
+              <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef class="customcheckboxthwidth">
+                  <mat-checkbox (change)="$event ? masterToggle() : null;  changeEventMyReq($event)"
+                                [checked]="selection.hasValue() && isAllSelected()"
+                                [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                [aria-label]="checkboxLabel()">
+                  </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row" class="customcheckboxthwidth">
+                  <mat-checkbox (click)="$event.stopPropagation()"
+                                (change)="$event ? selection.toggle(row) : null;  changeEventMyReq($event)"
+                                [checked]="selection.isSelected(row)"
+                                [aria-label]="checkboxLabel(row)">
+                  </mat-checkbox>
+                </td>
+              </ng-container>
+            
+              <!-- Name Column -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> 
+                  
+                  <div class="requestCard" *ngIf="element.name == 'CardOne'">
+                    <div class="row mx-0 marginbottom-16px">
+                      <div class="col-md-9 p-0">
+                        <div class="leftsidetextsection">                          
+                          <ul>
+                            <div class="flagS">
+                              <img src="assets/images/non-premium_banner.svg" alt="non-premium_banner"/>
+                              <span>Non-Premium</span>
+                            </div>
+                            <li class="firstLi"><span><span class="grey">Trip ID:</span> 3676522 (L)</span></li>
+                            <li><span><span class="grey">Pickup Date:</span> 24-Feb-21 10:20 AM</span></li>
+                            <li><span><span class="grey">Transport Desk:</span> Noida SEZ-Tower2-U1-All Floors</span></li> 
+                            <li><span><span class="grey">Entity:</span> Tech</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-md-3 text-right pr-0">
+                        <div class="rightsideicononly">
+                          <ul>
+                            <li><a href="javascript:void('0')" tooltip="Sms"><span class="app-sms_icon smsIcon"></span></a></li>
+                            <li><a href="javascript:void('0')" tooltip="Print"><span class="app-printer_icon"></span></a></li>
+                            <li><a href="javascript:void('0')" tooltip="Edit"><span class="hcl-edit"></span></a></li>
+                            <li><a href="javascript:void('0')" tooltip="Transfer"><span class="app-transfer_icon"></span></a></li>                            
+                            <li><a href="javascript:void('0')" tooltip="Cancel"><span class="app-cancel_icon"></span></a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mx-0">
+                      <div class="col-md-6 paddright-20 pl-0 mb20"> 
+                        <div class="requestLeftCard">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">3676522 | Nitin Soni (51680000) | E2</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="circle"></span> B - 2/3, ABC Building, Greater Noida, UP, Ghaziabad</p>
+                          <p class="requestLeftCardText"> <span class="location app-location-01"></span> HCL Technologies Ltd. Sector 127, Noida</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6 p-0 mb20">
+                        <div class="requestLeftCard">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">3676522 | Nitin Soni (51680000) | E2</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="circle"></span> B - 2/3, ABC Building, Greater Noida, UP, Ghaziabad</p>
+                          <p class="requestLeftCardText"> <span class="location app-location-01"></span> HCL Technologies Ltd. Sector 127, Noida</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6 paddright-20 pl-0">
+                        <div class="requestLeftCard">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">3676522 | Nitin Soni (51680000) | E2</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="circle"></span> B - 2/3, ABC Building, Greater Noida, UP, Ghaziabad</p>
+                          <p class="requestLeftCardText"> <span class="location app-location-01"></span> HCL Technologies Ltd. Sector 127, Noida</p>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 p-0"> 
+                        <div class="requestLeftCard customCardBackground">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">John Doe</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                              <span> <i class="app-Arrow"></i> </span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="app-vendor_icon"></span> Carzonrent. Pvt. Ltd <span class="float-right carNumberText">DL XX S56XX</span></p>
+                          <p class="requestLeftCardText"> <span class="app-driver_icon"></span> Transport Executive Name <span class="float-right carNameText">Wagon R | Petrol</span></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="requestCard" *ngIf="element.name == 'CardTwo'">
+                    <div class="row mx-0 marginbottom-16px">
+                      <div class="col-md-9 p-0">
+                        <div class="leftsidetextsection">                          
+                          <ul>
+                            <div class="flagS">
+                              <img src="assets/images/non-premium_banner.svg" alt="non-premium_banner"/>
+                              <span>Non-Premium</span>
+                            </div>
+                            <li class="firstLi"><span><span class="grey">Trip ID:</span> 3676522 (L)</span></li>
+                            <li><span><span class="grey">Pickup Date:</span> 24-Feb-21 10:20 AM</span></li>
+                            <li><span><span class="grey">Transport Desk:</span> Noida SEZ-Tower2-U1-All Floors</span></li> 
+                            <li><span><span class="grey">Entity:</span> Tech</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-md-3 text-right pr-0">
+                        <div class="rightsideicononly">
+                          <ul>
+                            <li><a href="javascript:void('0')" tooltip="Print"><span class="app-printer_icon"></span></a></li>
+                            <li><a href="javascript:void('0')" tooltip="Edit"><span class="hcl-edit"></span></a></li>
+                            <li><a href="javascript:void('0')" tooltip="Transfer"><span class="app-transfer_icon"></span></a></li>                            
+                            <li><a href="javascript:void('0')" tooltip="Cancel"><span class="app-cancel_icon"></span></a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mx-0">
+                      <div class="col-md-6 paddright-20 pl-0 mb20"> 
+                        <div class="requestLeftCard">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">3676522 | Nitin Soni (51680000) | E2</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="circle"></span> B - 2/3, ABC Building, Greater Noida, UP, Ghaziabad</p>
+                          <p class="requestLeftCardText"> <span class="location app-location-01"></span> HCL Technologies Ltd. Sector 127, Noida</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6 p-0 mb20">
+                        <div class="requestLeftCard">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">3676522 | Nitin Soni (51680000) | E2</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="circle"></span> B - 2/3, ABC Building, Greater Noida, UP, Ghaziabad</p>
+                          <p class="requestLeftCardText"> <span class="location app-location-01"></span> HCL Technologies Ltd. Sector 127, Noida</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6 paddright-20 pl-0">
+                        <div class="requestLeftCard">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">3676522 | Nitin Soni (51680000) | E2</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="circle"></span> B - 2/3, ABC Building, Greater Noida, UP, Ghaziabad</p>
+                          <p class="requestLeftCardText"> <span class="location app-location-01"></span> HCL Technologies Ltd. Sector 127, Noida</p>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 p-0"> 
+                        <div class="requestLeftCard customCardBackground">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">John Doe</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                              <span> <i class="app-Arrow"></i> </span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="app-vendor_icon"></span> Carzonrent. Pvt. Ltd <span class="float-right carNumberText">DL XX S56XX</span></p>
+                          <p class="requestLeftCardText"> <span class="app-driver_icon"></span> Transport Executive Name <span class="float-right carNameText">Wagon R | Petrol</span></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="requestCard" *ngIf="element.name == 'CardThree'">
+                    <div class="row mx-0 marginbottom-16px">
+                      <div class="col-md-9 p-0">
+                        <div class="leftsidetextsection">                          
+                          <ul>
+                            <div class="flagS">
+                              <img src="assets/images/non-premium_banner.svg" alt="non-premium_banner"/>
+                              <span>Non-Premium</span>
+                            </div>
+                            <li class="firstLi"><span><span class="grey">Trip ID:</span> 3676522 (L)</span></li>
+                            <li><span><span class="grey">Pickup Date:</span> 24-Feb-21 10:20 AM</span></li>
+                            <li><span><span class="grey">Transport Desk:</span> Noida SEZ-Tower2-U1-All Floors</span></li> 
+                            <li><span><span class="grey">Entity:</span> Tech</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-md-3 text-right pr-0">
+                        <div class="rightsideicononly">
+                          <ul>
+                            <li><a href="javascript:void('0')" tooltip="Print"><span class="app-printer_icon"></span></a></li>
+                            <li><a href="javascript:void('0')" tooltip="Edit"><span class="hcl-edit"></span></a></li>
+                            <li><a href="javascript:void('0')" tooltip="Transfer"><span class="app-transfer_icon"></span></a></li>                            
+                            <li><a href="javascript:void('0')" tooltip="Cancel"><span class="app-cancel_icon"></span></a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mx-0">
+                      <div class="col-md-6 paddright-20 pl-0 mb20"> 
+                        <div class="requestLeftCard">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">3676522 | Nitin Soni (51680000) | E2</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="circle"></span> B - 2/3, ABC Building, Greater Noida, UP, Ghaziabad</p>
+                          <p class="requestLeftCardText"> <span class="location app-location-01"></span> HCL Technologies Ltd. Sector 127, Noida</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6 p-0 mb20">
+                        <div class="requestLeftCard">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">3676522 | Nitin Soni (51680000) | E2</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="circle"></span> B - 2/3, ABC Building, Greater Noida, UP, Ghaziabad</p>
+                          <p class="requestLeftCardText"> <span class="location app-location-01"></span> HCL Technologies Ltd. Sector 127, Noida</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6 paddright-20 pl-0">
+                        <div class="requestLeftCard">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">3676522 | Nitin Soni (51680000) | E2</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="circle"></span> B - 2/3, ABC Building, Greater Noida, UP, Ghaziabad</p>
+                          <p class="requestLeftCardText"> <span class="location app-location-01"></span> HCL Technologies Ltd. Sector 127, Noida</p>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 p-0"> 
+                        <div class="requestLeftCard customCardBackground">
+                          <div class="headerLeftCard">
+                            <span class="personNameText">John Doe</span>
+                            <span class="float-right">
+                              <span> <i class="app-call_icon"></i> 9899XXXXXX</span>
+                              <span> <i class="app-Arrow"></i> </span>
+                            </span>
+                          </div>
+                          <p class="requestLeftCardText"> <span class="app-vendor_icon"></span> Carzonrent. Pvt. Ltd <span class="float-right carNumberText">DL XX S56XX</span></p>
+                          <p class="requestLeftCardText"> <span class="app-driver_icon"></span> Transport Executive Name <span class="float-right carNameText">Wagon R | Petrol</span></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </td>
+              </ng-container>
+            
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+              </tr>
+            </table>
+            <mat-paginator #MatPaginator3 [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>  
+            <!-- table with checkboxs ends here -->
+            <div class="glBtn customButtonSection">
+              <button type="button" class="btn secondary-outline-button commonGreyBtnNew border-radius2px" [routerLink]="['/nighcabSheet']" [disabled]="checkedMyReq">Print</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- My requests ends here -->
+      </mat-tab>
+      <mat-tab> 
+        <ng-template mat-tab-label> Canceled Requests (<span>02</span>)</ng-template>
+        Canceled Requests text
+      </mat-tab>
+      <mat-tab> 
+        <ng-template mat-tab-label> Raised Requests (<span>0</span>)</ng-template>
+        Raised Requests text
+      </mat-tab>  
+    </mat-tab-group>
+    <!-- tabs starts here -->
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- Merge Cab Booking modal starts -->
+<p-dialog styleClass="depenUpload" header="Merge Cab Booking" [(visible)]="displayPosition" [dismissableMask]="true" position="center" [modal]="true" [style]="{width: '1152px'}" [baseZIndex]="10000"
+    [draggable]="false">
+
+    <div class="scrollV">
+        <!-- requests lists starts here -->
+        <div class="row mx-0 mb20">
+          <div class="col-md-1 pl-0 paddright16">
+            <div class="form-group cstmField mb-0">
+              <label>Sequence</label>
+              <p-dropdown [options]="SequenceType" [(ngModel)]="selectedSequenceType" placeholder="" optionLabel="name"></p-dropdown> 
+            </div>
+          </div>
+          <div class="col-md-11 p-0">
+            <div class="mergerequest-card">
+              <div class="row mx-0">
+                <div class="col-md-2 pl-0">
+                  <label>Request ID</label>
+                  <p>3676522</p>
+                </div>
+                <div class="col-md-3">
+                  <label>Pickup Time</label>
+                  <p>24-Feb-21 10:20 AM</p>
+                </div>
+                <div class="col-md-4">
+                  <label>Pickup</label>
+                  <p><b>Nitin Soni (51680000) | E2</b> <br> B - 2/3, ABC Building, Greater Noida, UP</p>
+                </div>
+                <div class="col-md-3 pr-0">
+                  <label>Drop</label>
+                  <p>HCL, SEZ, Sec - 127, Noida</p>
+                </div>
+              </div>
+              <!-- <span class="deleteIcon app-delete_icon" tooltip=""></span> -->
+              <span (mouseenter)="playDeleteIcon()" class="deleteIcon commonPopOverLottieIcon">
+                <ng-lottie [options]="lottieConfigDeleteIcon" (animationCreated)="handleAnimationDeleteIcon($event)" tooltip="Delete"></ng-lottie>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mx-0 mb20">
+          <div class="col-md-1 pl-0 paddright16">
+            <div class="form-group cstmField mb-0">
+              <label>Sequence</label>
+              <p-dropdown [options]="SequenceType" [(ngModel)]="selectedSequenceType" placeholder="" optionLabel="name"></p-dropdown> 
+            </div>
+          </div>
+          <div class="col-md-11 p-0">
+            <div class="mergerequest-card">
+              <div class="row mx-0">
+                <div class="col-md-2 pl-0">
+                  <label>Request ID</label>
+                  <p>3676522</p>
+                </div>
+                <div class="col-md-3">
+                  <label>Pickup Time</label>
+                  <p>24-Feb-21 10:20 AM</p>
+                </div>
+                <div class="col-md-4">
+                  <label>Pickup</label>
+                  <p><b>Nitin Soni (51680000) | E2</b> <br> B - 2/3, ABC Building, Greater Noida, UP</p>
+                </div>
+                <div class="col-md-3 pr-0">
+                  <label>Drop</label>
+                  <p>HCL, SEZ, Sec - 127, Noida</p>
+                </div>
+              </div>
+              <span (mouseenter)="playDeleteIcon()" class="deleteIcon commonPopOverLottieIcon">
+                <ng-lottie [options]="lottieConfigDeleteIcon" (animationCreated)="handleAnimationDeleteIcon($event)" tooltip="Delete"></ng-lottie>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mx-0 mb20">
+          <div class="col-md-1 pl-0 paddright16">
+            <div class="form-group cstmField mb-0">
+              <label>Sequence</label>
+              <p-dropdown [options]="SequenceType" [(ngModel)]="selectedSequenceType" placeholder="" optionLabel="name"></p-dropdown> 
+            </div>
+          </div>
+          <div class="col-md-11 p-0">
+            <div class="mergerequest-card">
+              <div class="row mx-0">
+                <div class="col-md-2 pl-0">
+                  <label>Request ID</label>
+                  <p>3676522</p>
+                </div>
+                <div class="col-md-3">
+                  <label>Pickup Time</label>
+                  <p>24-Feb-21 10:20 AM</p>
+                </div>
+                <div class="col-md-4">
+                  <label>Pickup</label>
+                  <p><b>Nitin Soni (51680000) | E2</b> <br> B - 2/3, ABC Building, Greater Noida, UP</p>
+                </div>
+                <div class="col-md-3 pr-0">
+                  <label>Drop</label>
+                  <p>HCL, SEZ, Sec - 127, Noida</p>
+                </div>
+              </div>
+              <span (mouseenter)="playDeleteIcon()" class="deleteIcon commonPopOverLottieIcon">
+                <ng-lottie [options]="lottieConfigDeleteIcon" (animationCreated)="handleAnimationDeleteIcon($event)" tooltip="Delete"></ng-lottie>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- requests lists ends here -->
+
+        <div class="row">
+          <div class="col-md-9 pr-0">
+            <div class="row mx-0">
+              <div class="col-md-6 pl-0 paddright16">
+                <div class="form-group cstmField iconHelper mb-0 iconVendorAndDriverCommon">
+                  <label>Vendor</label>
+                  <p-autoComplete [(ngModel)]="selectedVendorsNewAdvanced" [suggestions]="filteredVendorsNew" class="" (completeMethod)="filterVendorsNew($event)" [size]="30"
+                                  [minLength]="1" placeholder="Vendor" panelStyleClass="panelClass" field="name" [dropdown]="false">  
+                      <ng-template let-vendorNew pTemplate="item">
+                          <div class="vendorNew-item">
+                            {{vendorNew.name}} 
+                          </div>
+                      </ng-template>
+                    </p-autoComplete>
+                  <span class="app-search_icon"></span>
+                </div>
+              </div>
+              <div class="col-md-6 paddright16 pl-0">
+                <div class="form-group cstmField iconHelper mb-0 iconVendorAndDriverCommon">
+                  <label>Driver</label>
+                  <p-autoComplete [(ngModel)]="selectedDriversNewAdvanced" [suggestions]="filteredDriversNew" class="" (completeMethod)="filterDriversNew($event)" [size]="30"
+                                  [minLength]="1" placeholder="Driver" panelStyleClass="panelClass" field="name" [dropdown]="false">  
+                      <ng-template let-driverNew pTemplate="item">
+                          <div class="driverNew-item">
+                            {{driverNew.name}} 
+                          </div>
+                      </ng-template>
+                  </p-autoComplete>
+                  <span class="app-search_icon"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 pl-0">
+            <div class="form-group cstmField mb-0">
+              <label>Contact Number</label>
+              <input type="text" placeholder="Type Here" value="98XXXXXXXX" pInputText>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="glBtn customButtonSection modalbtns">
+        <button type="button" class="btn secondary-outline-button border-radius2px" (click)="displayPosition=false">Cancel</button>
+        <button (click)="saveDepend(); displayPosition=false"  type="button" class="btn primary-button border-radius2px">Submit</button>  
+    </div>
+</p-dialog>
+<!-- Merge Cab Booking modal ends -->
+
+
+
+<!-- Raise Request modal starts -->
+<p-dialog styleClass="depenUpload" header="Raise Request" [(visible)]="displayPositionRaiseReq" [dismissableMask]="true" position="center" [modal]="true" [style]="{width: '1152px'}" [baseZIndex]="10000"
+    [draggable]="false">
+
+    <div class="scrollV">
+        <div class="row">
+          <div class="col-md-8 paddright16">
+            <div class="form-group employeeSearchRaiseReq">
+              <p-autoComplete [(ngModel)]="selectedBrandsNewAdvanced" [suggestions]="filteredBrandsNew" class="customautocomplete" (completeMethod)="filterBrands($event)" [size]="30"
+                        [minLength]="1" placeholder="Search by SAP ID/Name" panelStyleClass="panelClass" field="name" [dropdown]="false"> 
+                  <ng-template let-employee pTemplate="item" class="autoEmprow">
+                    <div class="employee-item">
+                      <div class="row autoEmprow">  
+                        <div class="col-6">
+                            <span class="auto_Ellipses auto_dark">
+                                  {{employee.name}}  
+                            </span>
+                        </div>  
+                        <div class="col-6 text-right auto_dark"> 
+                            {{employee.employeeId}}
+                        </div>  
+                        <div class="col-6"> {{employee.employeePosition}}</div>   
+                        <div class="col-6 text-right">  {{employee.employeeBand}}</div>  
+                        <div class="col-6">
+                          <span class="auto_Ellipses"> {{employee.employeedu}}</span>
+                        </div>  
+                        <div class="col-6 text-right"><span> {{employee.employeeloc}}</span></div>   
+                      </div>
+                    </div>
+                  </ng-template>
+              </p-autoComplete>
+              <span class="app-search_icon"></span>
+            </div>
+          </div>
+          <div class="col-md-4 pl-0">
+            <div class="form-group cstmField">
+              <label>Select Traveller on STBT else Select Local</label>
+              <div class="btn-group travellerLocalGroup">
+                <label class="btn btn-primary" [(ngModel)]="radioModel" (click)="localTravelClick()" btnRadio="Local" tabindex="0" role="button">Local</label>
+                <label class="btn btn-primary" [(ngModel)]="radioModel" (click)="travellerClick()" btnRadio="Traveller" tabindex="0" role="button">Traveller</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="readonlyContentSection">
+            <div class="row">
+              <div class="col-md-2">
+                <div class="form-group cstmField">
+                  <label>Request ID</label>
+                  <p>New</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group cstmField">
+                  <label>Employee</label>
+                  <p>John Doe (5168XXXX)</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group cstmField">
+                  <label>Organisation Type</label>
+                  <p>Corporate Support</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group cstmField">
+                  <label>Category</label>
+                  <p>Local</p>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group cstmField mb-0">
+                  <label>GCEU</label>
+                  <p>BTIS</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group cstmField mb-0">
+                  <label>SU</label>
+                  <p>BTIS - EIS - EIS - DU1</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group cstmField mb-0">
+                  <label>CEU</label>
+                  <p>BTIS - EIS</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group cstmField mb-0">
+                  <label>ESS Address</label>
+                  <p>Xxxxxxxx - xxxxxxxxx - xxxxxxxxxxxxx</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="hiddenFields">
+          <div class="col-md-4 paddright16">
+            <div class="form-group cstmField">
+              <label>
+                Approving Authority
+                <div class="float-right">
+                  <div class="form-group cstmField pr-0 checkboxCstmFieldNotAvailable mb-0">
+                    <input type="checkbox" class="cstmChekBox" id="checkBoxInput2">
+                    <label for="checkBoxInput2" class="textC">
+                      Not Available
+                    </label>
+                  </div>
+                  <span class="infoIconAuthority app-info-01" tooltip="Info"></span>
+                </div>
+              </label>
+              <p-dropdown [options]="approvingAuthority" [(ngModel)]="selectedapprovingAuthority" placeholder="Select" optionLabel="name"></p-dropdown> 
+            </div>
+          </div>
+          <div class="col-md-4 paddright16 pl-0">
+            <div class="form-group cstmField">
+              <label>Contact Number</label>
+              <input type="tel" placeholder="Type Here" maxlength="12" value="+91" pInputText>
+            </div>
+          </div>
+          <div class="col-md-4 pl-0">
+            <div class="form-group cstmField">
+              <label>Request Type</label>              
+              <ul class="radioSwitch requestType">
+                <li [ngClass]="{'active': i === 0}"
+                    *ngFor="let subModule of subModules; let i = index" [class.active]="selectedIndex === i"
+                    (click)="setIndex(i, $event)">
+                    {{ subModule.name  }}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4 paddright16">
+            <div class="form-group cstmField">
+              <label>Project Name</label>
+              <p-dropdown [options]="ProjectName" [(ngModel)]="selectedProjectName" placeholder="Select" optionLabel="name"></p-dropdown> 
+            </div>
+          </div>
+
+
+
+          <div class="col-md-2 paddright16 pl-0">
+            <div class="form-group cstmField calendarHelperIcon">
+              <label>Pickup Date</label>
+              <p-calendar placeholder="Select" [maxDate]="dateTime" [(ngModel)]="Pickupbasic" [monthNavigator]="true" dateFormat="dd-M-y" [yearNavigator]="true"
+               yearRange="2000:2030" [readonlyInput]="true">
+              </p-calendar>
+              <span class="app-Calendar commonCalendarIcon"></span> 
+            </div>
+          </div>
+          <div class="col-md-2 paddright16 pl-0">
+            <div class="form-group cstmField calendarHelperIcon">
+              <label>Pickup Time</label>
+              <p-calendar [(ngModel)]="date10" [timeOnly]="true" inputId="timeonly" placeholder="10:00 AM" hourFormat="12"></p-calendar>
+              <span class="app-time commonCalendarIcon"></span>
+            </div>
+          </div>
+          <div class="col-md-4 pl-0">
+            <div class="form-group cstmField">
+              <label>Alternate Transport Desk</label>
+              <p-dropdown [options]="TransportDesk" [(ngModel)]="selectedTransportDesk" placeholder="Select" optionLabel="name"></p-dropdown> 
+            </div>
+          </div>
+
+
+          <div class="col-md-2 paddright16">
+            <div class="form-group cstmField">
+              <label>Pin Code</label>
+              <input type="text" placeholder="Type here…" pInputText> 
+            </div>
+          </div>
+          <div class="col-md-2 paddright16 pl-0">
+            <div class="form-group cstmField">
+              <label>Pickup City</label>
+              <p-dropdown [options]="PickupCity" [(ngModel)]="selectedPickupCity" placeholder="Select" optionLabel="name"></p-dropdown> 
+            </div>
+          </div>
+          <div class="col-md-4 paddright16 pl-0">
+            <div class="form-group cstmField">
+              <label>Pickup Point</label>
+              <input type="text" placeholder="Type here…" pInputText>
+            </div>
+          </div>
+
+          <div class="col-md-2 paddright16 pl-0">
+            <div class="form-group cstmField">
+              <label>Pin Code</label>
+              <input type="text" placeholder="Type here…" pInputText> 
+            </div>
+          </div>
+          <div class="col-md-2 paddright16 pl-0">
+            <div class="form-group cstmField">
+              <label>Drop City</label>
+              <p-dropdown [options]="DropupCity" [(ngModel)]="selectedDropupCity" placeholder="Select" optionLabel="name"></p-dropdown> 
+            </div>
+          </div>
+
+
+          <div class="col-md-4 paddright16">
+            <div class="form-group cstmField">
+              <label>Drop Point</label>
+              <input type="text" placeholder="Type here…" pInputText>
+            </div>
+          </div>
+
+          <div class="col-md-4 paddright16 pl-0">
+            <div class="form-group cstmField">
+              <label>Cab Type</label>
+              <ul class="radioSwitch radioCabType">
+                <li [ngClass]="{'active': i === 0}"
+                    *ngFor="let cab of subModulesCabType; let i = index" [class.active]="selectedIndexCabType === i"
+                    (click)="setIndexCabType(i, $event)">
+                    {{ cab.name  }}
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-4 paddright16 pl-0">
+            <div class="form-group cstmField">
+              <label>Trip Type</label>
+              <ul class="radioSwitch radioCabType">
+                <li [ngClass]="{'active': i === 0}"
+                    *ngFor="let tripType of subModulesTripType; let i = index" [class.active]="selectedIndexTripType === i"
+                    (click)="setIndexTripType(i, $event)">
+                    {{ tripType.name  }}
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- <div class="col-md-4 paddright16" *ngIf="onClickhiddenFields">
+            <div class="form-group cstmField">
+              <label>Cab Type</label>
+              <ul class="radioSwitch radioCabTypeTraveller">
+                <li [ngClass]="{'active': i === 0}"
+                    *ngFor="let cab of subModulesCabType; let i = index" [class.active]="selectedIndexCabType === i"
+                    (click)="setIndexCabType(i, $event)">
+                    {{ cab.name  }}
+                </li>
+              </ul>
+            </div>
+          </div> -->
+
+          <!-- <div class="col-md-4 paddright16 pl-0" *ngIf="onClickhiddenFields">
+            <div class="form-group cstmField">
+              <label>Trip Type</label>
+              <ul class="radioSwitch radioCabType">
+                <li [ngClass]="{'active': i === 0}"
+                    *ngFor="let tripType of subModulesTripType; let i = index" [class.active]="selectedIndexTripType === i"
+                    (click)="setIndexTripType(i, $event)">
+                    {{ tripType.name  }}
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-4 paddright16 flightNumberIcons pl-0" *ngIf="onClickhiddenFields">
+            <div class="form-group cstmField mb-0">
+              <label>Flight Number</label>
+              <input type="text" placeholder="Type here" pInputText> 
+            </div>
+
+            <a href="javascript:void('0')" (click)="addCoPassanger.toggle($event)" class="addUser">
+              <span class="pasanger-count">{{addedCopassanger.length}}</span>
+              <span class="app-add_user_icon" tooltip="Add User"></span>
+            </a>
+            <a href="javascript:void('0')"  (click)="addLocation.toggle($event)" class="addLocationIcon">
+              <span class="pasanger-count">{{addedLocation.length}}</span>
+              <span class="app-location-01" tooltip="Add Location"></span>
+            </a>
+          </div> -->
+
+
+          <div class="col-md-4 paddright16 reasonAddUserIcon">
+
+            <a href="javascript:void('0')" (click)="addCoPassanger.toggle($event)">
+              <span class="pasanger-count">{{addedCopassanger.length}}</span>
+              <span class="app-add_user_icon" tooltip="Add User"></span>
+            </a>
+
+            <div class="form-group cstmField mb-0">
+              <label>Reason</label>
+              <p-dropdown [options]="Resons" [(ngModel)]="selectedResons" placeholder="Select" optionLabel="name"></p-dropdown> 
+            </div>
+          </div>
+
+          
+
+          <div class="col-md-8 paddright16 pl-0">
+            <div class="form-group cstmField mb-0">
+              <label>Remarks <span class="float-right"> {{0 + role3.length}}/200</span></label>
+              <input type="text" [(ngModel)]="role3" maxlength="200" placeholder="Type here…" pInputText>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="row" *ngIf="onClickhiddenFields">
+          <div class="col-md-4 paddright16">
+            <div class="form-group cstmField">
+              <label>
+                Approving Authority
+                <div class="float-right">
+                  <div class="form-group cstmField pr-0 checkboxCstmFieldNotAvailable mb-0">
+                    <input type="checkbox" class="cstmChekBox" id="checkBoxInput2">
+                    <label for="checkBoxInput2" class="textC">
+                      Not Available
+                    </label>
+                  </div>
+                  <span class="infoIconAuthority app-info-01" tooltip="Info"></span>
+                </div>
+              </label>
+              <p-dropdown [options]="approvingAuthority" [(ngModel)]="selectedapprovingAuthority" placeholder="Select" optionLabel="name"></p-dropdown> 
+            </div>
+          </div>
+          <div class="col-md-4 paddright16 pl-0">
+            <div class="form-group cstmField">
+              <label>Contact Number</label>
+              <input type="tel" placeholder="Type Here" maxlength="12" value="+91" pInputText>
+            </div>
+          </div>
+          <div class="col-md-4 pl-0">
+            <div class="form-group cstmField">
+              <label>Request Type</label>              
+              <ul class="radioSwitch requestType">
+                <li [ngClass]="{'active': i === 0}"
+                    *ngFor="let subModuleReq1 of subModulesReqType1; let i = index" [class.active]="selectedIndexReqType1 === i"
+                    (click)="setIndexReqType1(i, $event)">
+                    {{ subModuleReq1.name  }}
+                </li>
+              </ul>
+              <!-- <div class="btn-group travellerLocalGroup">
+                <label class="btn btn-primary" [(ngModel)]="radioModelReqType" btnRadio="Project" tabindex="0" role="button">Project</label>
+                <label class="btn btn-primary" [(ngModel)]="radioModelReqType" btnRadio="Rcc" tabindex="0" role="button">RCC</label>
+              </div> -->
+            </div>
+          </div>
+          <div class="col-md-4 paddright16">
+            <div class="form-group cstmField">
+              <label>Project Name</label>
+              <p-dropdown [options]="ProjectName" [(ngModel)]="selectedProjectName" placeholder="Select" optionLabel="name"></p-dropdown> 
+            </div>
+          </div>
+          <div class="col-md-4 paddright16 pl-0">
+            <div class="form-group cstmField">
+              <label>TAS ID</label>
+              <p-dropdown [options]="TasId" [(ngModel)]="selectedTasId" placeholder="Select" optionLabel="name"></p-dropdown> 
+            </div>
+          </div>
+
+          <div class="col-md-4 paddright16 pl-0">
+            <div class="form-group cstmField">
+              <label>Duration of Travel</label>
+              <p-calendar #dateFilter [numberOfMonths]="2" 
+                hideOnDateTimeSelect="true" 
+                selectionMode="range" 
+                placeholder="24-Feb-21 - 24-Feb-21" 
+                icon="app-Calendar" 
+                [showIcon]="true" 
+                [readonlyInput]="true" 
+                dateFormat="dd-M-y" 
+                (onSelect)="onDatesRangeFilterSelected($event)" 
+                [(ngModel)]="datesRangeFilter"></p-calendar> 
+            </div>
+          </div>
+
+          <div class="col-md-2 paddright16">
+            <div class="form-group cstmField calendarHelperIcon">
+              <label>Date</label>
+              <p-calendar placeholder="Select" [maxDate]="dateTime" [(ngModel)]="Pickupbasic" [monthNavigator]="true" dateFormat="dd-M-y" [yearNavigator]="true"
+               yearRange="2000:2030" [readonlyInput]="true">
+              </p-calendar>
+              <span class="app-Calendar commonCalendarIcon"></span> 
+            </div>
+          </div>
+          <div class="col-md-2 paddright16 pl-0">
+            <div class="form-group cstmField calendarHelperIcon">
+              <label>Pickup Time</label>
+              <p-calendar [(ngModel)]="date10" [timeOnly]="true" inputId="timeonly" placeholder="10:00 AM" hourFormat="12"></p-calendar>
+              <span class="app-time commonCalendarIcon"></span>
+            </div>
+          </div>         
+
+
+          <div class="col-md-2 paddright16 pl-0">
+            <div class="form-group cstmField">
+              <label>Pin Code</label>
+              <input type="text" placeholder="Type here…" pInputText> 
+            </div>
+          </div>
+          <div class="col-md-2 paddright16 pl-0">
+            <div class="form-group cstmField">
+              <label>Pickup City</label>
+              <p-dropdown [options]="PickupCity" [(ngModel)]="selectedPickupCity" placeholder="Select" optionLabel="name"></p-dropdown> 
+            </div>
+          </div>
+          <div class="col-md-4 pl-0">
+            <div class="form-group cstmField">
+              <label>Pickup Point</label>
+              <input type="text" placeholder="Type here…" pInputText>
+            </div>
+          </div>
+
+          <div class="col-md-2 paddright16">
+            <div class="form-group cstmField">
+              <label>Pin Code</label>
+              <input type="text" placeholder="Type here…" pInputText> 
+            </div>
+          </div>
+          <div class="col-md-2 paddright16 pl-0">
+            <div class="form-group cstmField">
+              <label>Drop City</label>
+              <p-dropdown [options]="DropupCity" [(ngModel)]="selectedDropupCity" placeholder="Select" optionLabel="name"></p-dropdown> 
+            </div>
+          </div>
+
+
+          <div class="col-md-4 paddright16 pl-0">
+            <div class="form-group cstmField">
+              <label>Drop Point</label>
+              <input type="text" placeholder="Type here…" pInputText>
+            </div>
+          </div>
+
+          <div class="col-md-4 pl-0">
+            <div class="form-group cstmField">
+              <label>Alternate Transport Desk</label>
+              <p-dropdown [options]="TransportDesk" [(ngModel)]="selectedTransportDesk" placeholder="Select" optionLabel="name"></p-dropdown> 
+            </div>
+          </div>
+
+          <div class="col-md-4 paddright16">
+            <div class="form-group cstmField">
+              <label>Cab Type</label>
+              <ul class="radioSwitch cabTypeTraveller">
+                <li [ngClass]="{'active': i === 0}"
+                    *ngFor="let cab of subModulesCabType; let i = index" [class.active]="selectedIndexCabType === i"
+                    (click)="setIndexCabType(i, $event)">
+                    {{ cab.name  }}
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-4 paddright16 pl-0">
+            <div class="form-group cstmField">
+              <label>Trip Type</label>
+              <ul class="radioSwitch radioCabType">
+                <li [ngClass]="{'active': i === 0}"
+                    *ngFor="let tripType of subModulesTripType; let i = index" [class.active]="selectedIndexTripType === i"
+                    (click)="setIndexTripType(i, $event)">
+                    {{ tripType.name  }}
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-4 paddright16 flightNumberIcons pl-0">
+            <div class="form-group cstmField mb-0">
+              <label>Flight Number</label>
+              <input type="text" placeholder="Type here" pInputText> 
+            </div>
+
+            <a href="javascript:void('0')" (click)="addCoPassanger.toggle($event)" class="addUser">
+              <span class="pasanger-count">{{addedCopassanger.length}}</span>
+              <span class="app-add_user_icon" tooltip="Add User"></span>
+            </a>
+            <a href="javascript:void('0')"  (click)="addLocation.toggle($event)" class="addLocationIcon">
+              <span class="pasanger-count">{{addedLocation.length}}</span>
+              <span class="app-location-01" tooltip="Add Location"></span>
+            </a>
+          </div>
+
+
+          <div class="col-md-4 paddright16">
+
+            <div class="form-group cstmField mb-0">
+              <label>Reason</label>
+              <p-dropdown [options]="Resons" [(ngModel)]="selectedResons" placeholder="Select" optionLabel="name"></p-dropdown> 
+            </div>
+          </div>
+
+          
+
+          <div class="col-md-8 paddright16 pl-0">
+            <div class="form-group cstmField mb-0">
+              <label>Remarks <span class="float-right"> {{0 + role4.length}}/200</span></label>
+              <input type="text" [(ngModel)]="role4" maxlength="200" placeholder="Type here…" pInputText>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <div class="glBtn customButtonSection modalbtns">
+        <button type="button" class="btn secondary-outline-button border-radius2px" (click)="displayPositionRaiseReq=false">Cancel</button>
+        <button type="button" class="btn secondary-outline-button border-radius2px">Reset</button>
+        <button (click)="approval(); displayPositionRaiseReq=false"  type="button" class="btn primary-button border-radius2px">Submit</button>  
+    </div>
+</p-dialog>
+<!-- Raise Request modal ends -->
+
+
+<p-toast styleClass="confirmMsg" key="ms" position="top-center" [modal]="true" [baseZIndex]="5000">
+  <ng-template let-message pTemplate="message">
+      <div class="thankMsg">
+          <img src="assets/images/tick.gif" alt="">
+          <p>Your request have been<br> submitted successfully!</p>
+      </div>
+  </ng-template>
+</p-toast>
+
+<p-toast styleClass="confirmMsg" key="a" position="top-center" [modal]="true" [baseZIndex]="5000">
+  <ng-template let-message pTemplate="message">
+      <div class="thankMsg">
+          <img src="assets/images/tick.gif" alt="">
+          <p>Your request have been<br> submitted successfully!</p>
+      </div>
+  </ng-template>
+</p-toast>
+
+<p-overlayPanel #addCoPassanger [dismissable]="true" [appendTo]="body" styleClass="copassanger-container">
+  <div class="addCopassenger">
+      <div class="searchBox">
+          <input type="search" class="form-control" autocomplete="off" placeholder="Search"/>
+          <span class="app-Cross clearField"></span>
+      </div>
+      <div class="searched-passenger">
+          <ul>
+              <li *ngFor="let passanger of passangerList" class="animated fadeIn" (click)="addCopassanger()">
+                  <div class="empDetails">
+                      <h2>{{passanger.empname}}</h2>
+                      <div class="other-details">
+                          <span>{{passanger.sapid}}</span>,
+                          <span>{{passanger.designation}}</span>,
+                          <span>{{passanger.band}}</span>, <br>
+                          <span>{{passanger.department}}</span>
+                      </div>
+                  </div>
+                  <div class="addbutton">
+                      <span class="app-Add"></span>
+                  </div>
+              </li>
+          </ul>
+      </div>
+      <div class="added-passenger">
+          <h2  class="animated slideIn">Added (<span>{{addedCopassanger.length}}</span>)</h2>
+          <ul class="animated slideIn">
+              <li *ngFor="let addedpassanger of addedCopassanger" class="repeated-item">
+                  <div class="empDetails">
+                      <h2>{{addedpassanger.empname}}</h2>
+                  </div>
+                  <div class="addbutton">
+                      <span class="sapUse">{{addedpassanger.sapid}}</span>
+                      <span class="app-Cross removeButton" (click)="removeCopassanger(i)"></span>
+                  </div>
+              </li>
+          </ul>
+      </div>
+  </div>
+</p-overlayPanel>
+
+
+
+<p-overlayPanel #addLocation [dismissable]="true" [appendTo]="body" styleClass="copassanger-container">
+  <div class="addCopassenger">
+      <div class="searchBox" (click)="addnLocation()">
+          <input type="search" class="form-control" autocomplete="off" placeholder="Enter Location"/>
+          <span class="app-Add clearField"></span>
+      </div>
+      <div class="added-passenger">
+          <h2  class="animated slideIn">Added (<span>{{addedLocation.length }}</span>)</h2>
+          <ul class="animated slideIn">
+              <li *ngFor="let addedLocation of addedLocation" class="repeated-item">
+                  <div class="empDetails added-location">
+                      <h2>{{addedLocation.location}}</h2>
+                  </div>
+                  <div class="addbutton">
+                      <span class="app-Cross removeButton" (click)="removeLocation(i)"></span>
+                  </div>
+              </li>
+          </ul>
+      </div>
+  </div>
+</p-overlayPanel>
+
+
+

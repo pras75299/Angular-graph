@@ -1,0 +1,6 @@
+html{font-size: 14px;position: relative;min-height: 100%;}
+body {margin-bottom: 40px;background: #f0f0f0;font-family: 'Open Sans',sans-serif;}
+
+.commonScreen{border: 1px solid #e5e5e5;background:#fff;width: 600px;padding: 15px;border-radius: 4px;text-align: center;position: fixed;left: 50%;top: 50%;transform: translate(-50%,-50%);}
+.commonScreen h2 {color: rgba(0,0,0,.9);font-size: 1.2rem;display: block;margin: 10px 0 0;opacity: .7}
+.commonScreen h3 {color: rgba(0,0,0,.9);font-size: .93rem;display: block;margin: 15px 0;line-height: 19px}

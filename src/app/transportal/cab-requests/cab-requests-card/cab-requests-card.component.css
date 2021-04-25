@@ -1,0 +1,32 @@
+.header-cab-request{
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 8px;
+    display: block;
+    padding: 20px;
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+.header-cab-request .form-group.cstmField.padleft-0{
+    padding-left: 0px;
+}
+.header-cab-request .form-group.cstmField.padright-0{
+    padding-right: 0px;
+}
+.header-cab-request .form-group.cstmField{
+    padding: 0 8px;
+    margin-bottom: 0px;
+}
+
+.iconClassCustom{
+    position: relative;
+}
+
+.iconClassCustom span.iconpositioncustom{
+    position: absolute;
+    right: 18px;
+    top: 36px;
+    font-size: 18px;
+    color: #1ec00b;
+}

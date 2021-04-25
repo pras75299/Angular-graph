@@ -1,0 +1,29 @@
+<form (ngSubmit)="onSubmit()" #Login="ngForm">
+    <span class="ui-float-label form-group">
+        <input id="email" name="email" type="email" pInputText minlength="4" [(ngModel)]="user.email" #email="ngModel" required> 
+        <label for="email">Email</label>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="rs-help">
+            <div *ngIf="email.errors.required">
+              Email is required.
+            </div>
+            <div *ngIf="email.errors.minlength">
+              Email must be at least 4 characters long.
+            </div>
+          </div>
+    </span>
+    <span class="ui-float-label form-group">        
+        <input id="password" name="password" type="password" pInputText required minlength="6" [(ngModel)]="user.password" #password="ngModel"> 
+        <label for="password">Password</label>
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="rs-help">
+            <div *ngIf="password.errors.required">
+              Password is required.
+            </div>
+            <div *ngIf="password.errors.minlength">
+              Password must be at least 6 characters long.
+            </div>
+          </div>
+    </span>
+  <!-- <div class="text-center"><button pButton type="submit" class="ui-button-rounded ttU minBtn" label="Login" [disabled]="Login.invalid"></button></div> -->
+  <div class="text-center"><button pButton type="submit" class="btn btn-primary ttU" label="Login" [disabled]="Login.invalid"></button></div>
+  <div class="text-center mar-tp-20"><a routerLink="/forgot" class="themeLink">Forgot Password?</a></div>
+</form>

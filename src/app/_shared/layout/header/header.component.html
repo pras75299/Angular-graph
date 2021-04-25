@@ -1,0 +1,106 @@
+<nav class="header row">
+        <div class="col p-0">
+      
+          <div class="main-menu" dropdown>
+            <a class="appMenu" dropdownToggle> <span class="hcl-fevMenu"></span> </a>
+            <ul *dropdownMenu class="dropdown-menu animatedN fadeInNav" role="menu">
+              <li><a href="javascript:void(0)"> Inside header</a></li>
+              <li><a href="javascript:void(0)">Link One</a></li>
+              <li><a href="javascript:void(0)">Link Two</a></li>
+              <li><a href="javascript:void(0)">Link Three</a></li>
+              <li><a href="javascript:void(0)">Link Four</a></li>
+            </ul>
+          </div>
+          <a class="appTitle" routerLink="/"> Angular Graph (Pratice Application) </a>
+        </div>
+      
+      
+      
+        <div class="col-4 rightMenu pd0">
+
+          <div class="notiMenu" dropdown>
+            <a class="userNoti" dropdownToggle> <i class="hcl-bell"></i> <span class="counter">2</span></a>
+            <ul *dropdownMenu class="dropdown-menu dropdown-menu-right  animatedN fadeInNav customNotificationWidth" role="menu">
+              <li><a href="javascript:void(0)">
+                  <p class="notboldTextP">24-Feb-21</p>
+                  <p class="boldTextP">2 Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </a>
+              </li>
+      
+              <li><a href="javascript:void(0)">
+                  <p class="notboldTextP">25-Feb-21</p>
+                  <p class="boldTextP">2 Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </a>
+              </li>
+      
+              
+      
+            </ul>
+          </div>
+      
+          
+      
+          <div class="notiMenu" dropdown>
+            <a dropdownToggle class="userNoti"><i class="hcl-menu"></i></a>
+            <ul *dropdownMenu class="dropdown-menu dropdown-menu-right menuLink animatedN fadeInNav" role="menu">
+              <li>
+                <div class="menuOuter">
+                  <div class="menuBox">
+                    <h2>Menu one</h2>
+                    <ul>
+                      <li><a routerLink="/">Home</a></li> 
+                    </ul>
+                  </div>
+                  <div class="menuBox">
+                    <h2>Others</h2>
+                    <ul> 
+                        <li><a href="javascript:void(0)">Menu inside one</a></li> 
+                        <li><a href="javascript:void(0)">Menu inside two</a></li>
+                        <li><a href="javascript:void(0)">Menu inside three</a></li>   
+                        
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+      
+          
+      
+          <div class="profileMenu" dropdown placement="bottom right">
+            <a class="userInfo" dropdownToggle>
+              <span class="u_name">John Doe  </span> <span class="u_ID"> (123456789) </span>
+              <p class="u_role">Designation <i class="arrow-down"></i> </p>
+            </a>
+            <ul *dropdownMenu class="dropdown-menu dropdown-menu-right animatedN fadeInNav" role="menu">
+              <li>
+                <div class="userBlock">
+                  <div class="userImg">
+                    <img [src]="userImage" alt="User Image">
+                    <a href="https://wf6.myhcl.com/ess/esshome.aspx" class="iconCamera"><i class="hcl-camera"></i></a>
+                  </div>
+                  <h2>John Doe</h2>
+                  <p>Designation</p>
+                </div>
+                <div class="userRole">
+                  <h2>Person details</h2>
+                  <ul>
+                    <li class="active"><a href="#">Profile</a></li>
+                    <li><a href="#">Edit</a></li>
+                  </ul>
+                </div>
+                <div class="userLogout m-0">
+                  <button class="secondry-button" routerLink="/Logout">LOGOUT &nbsp;<span class="hcl-logout"></span></button>
+                </div>
+              </li>
+            </ul>
+          </div>
+      
+        </div>
+      </nav>
+      
+      
+      
+      
+    
+      

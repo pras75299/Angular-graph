@@ -1,0 +1,16 @@
+<form (ngSubmit)="onSubmit()" #Forgot="ngForm">
+    <span class="ui-float-label form-group">
+        <input id="email" name="email" type="email" pInputText minlength="4" [(ngModel)]="user.email" #email="ngModel" required> 
+        <label for="email">Email</label>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="rs-help">
+            <div *ngIf="email.errors.required">
+              Email is required.
+            </div>
+            <div *ngIf="email.errors.minlength">
+              Email must be at least 4 characters long.
+            </div>
+          </div>
+    </span>
+  <div class="text-center"><button pButton type="submit" class="btn btn-primary ttU" label="Confirm" [disabled]="Forgot.invalid" routerLink="/home"></button></div>
+  <div class="text-center mar-tp-20"><a routerLink="/login" class="themeLink">Back</a></div>
+</form>

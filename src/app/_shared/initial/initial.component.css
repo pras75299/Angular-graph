@@ -1,0 +1,36 @@
+.loginWraper{ height:100%; margin:0 auto; background-color:#f0f0f0;}
+.loginLft{ height:100%; float:left; width:calc(100% - 420px); padding:40px; position:relative;}
+.loginRgt{ height:100%; float:right; width:420px; background-color:#fff}
+.loginTag{ font-size:36px; line-height:1.2; color:#999} 
+.loginTag span{ color:#121212; text-transform:uppercase; font-weight:600}
+.loginFollow{ position:absolute; width:470px; right:40px; bottom:40px; clear:both; overflow:hidden}
+.loginFollow .caption{ float:left; font-size:24px; line-height:50px}
+.loginFollow .icon{ float:right; margin-left:56px; font-size:50px; position:relative; height:50px; line-height:50px}
+.loginFollow .icon i{ cursor:pointer}
+.loginFollow .icon::before{content:''; position:absolute; top:50%; margin-top:-2px; left:-56px; width:56px; height:0; border-top:2px solid #fff; border-left:2px solid #fff; border-right:2px solid #fff}
+.loginFollow .fakeRound{ position:absolute; width:10px; height:10px; border:2px solid #fff; border-radius:10px; left:-65px; top:19px}
+.dTable{ display:table}
+.dTableCell{ display:table-cell}
+.loginIcon{ text-align:center; font-size:48px}
+.loginText{ text-align:center; font-size:28px}
+.loginRgt .dTableCell{ padding:50px}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width:1024px) {
+	.loginWraper{ background-color:#fff}
+	.form-group{ width:420px; margin:0 auto}
+	.loginLft{ display:none}
+	.loginRgt { float:none; margin:0 auto; width:calc(100% - 40px)}
+	.loginIcon{ display:none}
+	.loginIcon i{ color:#c8c9c8}
+	.loginText{ margin-top:40px; font-size:16px; color:#bfbfbf}
+	.loginRgt .form-horizontal .control-label{ color:#b2b2b2}
+	.loginRgt .btn{ width:50%}
+	.loginRgt .hclStyle2{ display:block; font-size:14px; text-align:center; position:fixed; bottom:10px; left:50%; margin-left:-35px}
+	.mob-d-inline{ display:inherit}
+	.mob-panelCap strong{ color:#ff8c1e}
+}
+@media (max-width:420px) { 
+	.loginRgt{ width:calc(100% - 60px); max-width:inherit}
+	.loginRgt .dTableCell{ padding:0}
+}

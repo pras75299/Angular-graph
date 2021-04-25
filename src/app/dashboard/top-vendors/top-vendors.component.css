@@ -1,0 +1,116 @@
+.commonheadingvendor-class{
+    font-size: 16px;
+    color: #222222;
+    margin-bottom: 16px;
+    font-weight: 500;
+}
+
+.top-vendor-mainsection{
+    width: 100%;
+    display: block;
+    margin-top: 24px;
+}
+
+.topvendorleft{
+    width: calc(100% - 440px);
+    display: inline-block;
+}
+
+.topvendorleft table.table.w-100.vendor-table-main thead td{
+    border-top: none !important;
+    padding: 0px 0.75em !important;
+}
+
+.topvendorleft table.table.w-100.vendor-table-main tbody td{
+    border-top: none !important;
+    color: #777777;
+    font-size: 13px;
+}
+.topvendorleft table.table.w-100.vendor-table-main tbody tr{
+    background-color: #fff;
+    border-radius: 8px;
+    transition: all ease-in-out 0.3s;
+}
+
+.editIcontable{
+    color: #222;
+}
+
+.topvendorleft table.table.w-100.vendor-table-main tbody tr td:first-child{
+    border-radius: 8px 0px 0px 8px;
+}
+
+.topvendorleft table.table.w-100.vendor-table-main tbody tr td:last-child{
+    border-radius: 0px 8px 8px 0px;
+}
+
+.topvendorleft table.table.w-100.vendor-table-main tbody tr:hover{
+    box-shadow: 0px 3px 8px #1ec00b26;
+    transform: scale(1.03);
+}
+.topvendorleft table.table.w-100.vendor-table-main tbody tr td img{
+    vertical-align: baseline;
+}
+.topvendorleft table.table.w-100.vendor-table-main tbody tr:hover td{
+    color: #222;
+}
+
+.topvendorleft table.table.w-100.vendor-table-main {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.generate-report{
+    width: 398px;
+    margin-left: 42px;
+    display: inline-block;
+}
+
+.report-cards{
+    width: 100%;
+    display: block;
+}
+
+.report-cards li{
+    width: 122px;
+    min-height: 125px;
+    display: inline-block;
+    margin-right: 16px;
+    padding: 27px 8px;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+    box-shadow: none;
+}
+
+.report-cards li:hover{
+    box-shadow: 3px 3px 15px #1ec00b26;
+    transform: scale(1.06);
+}
+
+.report-cards li p{
+    color: #222222;
+    margin-bottom: 0px;
+    margin-top: 11px;
+    font-size: 13px;
+}
+.report-cards li img{
+    height: 30px;
+}
+
+.borderline-blue{
+    width: 46px;
+    margin: 5px auto 0px auto;
+    height: 2px;
+    background-color: #1ec00b;
+}
+
+.margintop-21{
+    margin-top: 21px;
+}
+
+.report-cards li:last-child{
+    margin-right: 0px;
+}

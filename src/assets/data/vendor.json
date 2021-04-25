@@ -1,0 +1,11 @@
+{
+    "data": [ 
+        {"name": "Vendor one", "code": "AF"}, 
+        {"name": "Vendor two", "code": "AX"}, 
+        {"name": "Vendor three", "code": "AL"}, 
+        {"name": "Vendor four", "code": "DZ"}, 
+        {"name": "Vendor five", "code": "AS"}, 
+        {"name": "Vendor six", "code": "AD"} 
+        
+    ]
+}

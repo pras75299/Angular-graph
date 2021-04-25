@@ -1,0 +1,275 @@
+<div class="request-overview-main">
+  <div class="container">
+    <!-- heading and calendar section -->
+    <div class="row mx-0 d-block">
+      <h3>
+        <span>Request Overview</span>
+        <div class="col btngroupmonth-yearmain float-right">
+          <div class="btn-group mainbtngroup btngroupborder-class" role="group" aria-label="Month and Quarter">
+            <div class="btn-group dropdownsmall max-width125" role="group" dropdown>
+              <p-dropdown [options]="singleMonth" [(ngModel)]="selectedsingleMonth" placeholder="Month" optionLabel="name">
+              </p-dropdown>
+            </div>
+            <div class="btn-group dropdownsmall max-width125" role="group" dropdown>
+              <p-dropdown [options]="quater" [(ngModel)]="selectedquater" placeholder="Weekly" optionLabel="name">
+              </p-dropdown>
+            </div>      
+            <div class="btn-group btn-groupcalendar" role="group">
+              <!-- <p-calendar [(ngModel)]="rangeDates" selectionMode="range" [monthNavigator]="true" dateFormat="dd-M-y"
+                                [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true" inputId="range"
+                                placeholder="DD-MM-YY - DD-MM-YY" icon="app-calendar_icon" (onClose)="onClose($event)" (onSelect)="onDatesRangeFilterSelected($event)" [showIcon]="true">
+              </p-calendar>   -->
+
+              <p-calendar #dateFilter [numberOfMonths]="2" 
+                hideOnDateTimeSelect="true" 
+                selectionMode="range"
+                icon="app-calendar_icon" 
+                [showIcon]="true" 
+                [readonlyInput]="true" 
+                dateFormat="dd-M-y" 
+                appendTo="body"
+                placeholder="DD-MM-YY - DD-MM-YY"
+                (onSelect)="onDatesRangeFilterSelected($event)" 
+                [(ngModel)]="datesRangeFilter"></p-calendar>
+              
+            </div>
+          </div>
+        </div>
+      </h3>
+    </div>
+    <!-- heading and calendar section ends -->
+
+    <!-- graph section starts -->
+    <div class="main-graph-section">
+      <li class="total">
+        <a href="javascript:void('0')">
+          <span class="commonsmall-text">Total</span>
+          <p class="totalText">1400</p>
+          <div class="common-graph-position">
+            <p-chart type="doughnut" width="60" height="60" [data]="totalData"  [options]="totalDataOptions"></p-chart>
+          </div>
+        </a>
+      </li>
+      <!-- new li -->
+      <li class="new commonextendclass" [ngClass]="newshowVar ? 'active' : ''" (click)="onNewLiClick()">
+        <a href="javascript:void('0')" *ngIf="isNewOld">
+          <div class="newInnerDivone">
+            <span class="commonsmall-text">New</span>
+            <p class="newText">450</p>
+            <div class="common-graph-position">
+              <p-chart type="doughnut" width="60" height="60" [data]="newData"  [options]="newDataOptions"></p-chart>
+            </div>
+          </div>          
+        </a>
+        <a href="javascript:void('0')" *ngIf="isNewnew1">
+          <div class="newInnerDivtwo">
+            <div class="graphposition-second">
+              <p-chart type="doughnut" width="81" height="81" [data]="newDataOne"  [options]="newDataOptionsOne"></p-chart>
+              <p class="insideGraphText">
+                New
+                <span>450</span>
+              </p>
+            </div>   
+            
+            <div class="details-display">
+              <p>
+                Luxury <span>30</span>
+                <span class="d-block float-none">
+                  <progressbar [value]="30" type="warning"></progressbar>
+                </span>
+              </p>
+              
+              <p>
+                Premium <span>20</span>
+                <span class="d-block float-none">
+                  <progressbar [value]="20" type="danger"></progressbar>
+                </span>
+              </p>
+              
+              <p>
+                Non-Premium <span>250</span>
+                <span class="d-block float-none">
+                  <progressbar [value]="75"></progressbar>
+                </span>
+              </p>
+              
+              <p>
+                Night Cab <span>150</span>
+                <span class="d-block float-none">
+                  <progressbar [value]="25" type="success"></progressbar>
+                </span>
+              </p>              
+            </div>
+  
+          </div>
+        </a>
+      </li>
+      <!-- new li end -->
+
+
+      <li class="upcoming commonextendclass" [ngClass]="upcomingshowVar ? 'active' : ''" (click)="onupcomingliClick()">
+        <a href="javascript:void('0')" *ngIf="isUpcoming">
+          <span class="commonsmall-text">Upcoming</span>      
+          <p class="upcomingText">600</p>  
+          <div class="common-graph-position">
+            <p-chart type="doughnut" width="60" height="60" [data]="upcomingData"  [options]="upcomingDataOptions"></p-chart>
+          </div>
+        </a>
+
+        <a href="javascript:void('0')" *ngIf="isUpcomingOne">
+          <div class="newInnerDivtwo">
+            <div class="graphposition-second">
+              <p-chart type="doughnut" width="81" height="81" [data]="newDataOne"  [options]="newDataOptionsOne"></p-chart>
+              <p class="insideGraphText">
+                New
+                <span>450</span>
+              </p>
+            </div>   
+            
+            <div class="details-display">
+              <p>
+                Luxury <span>30</span>
+                <span class="d-block float-none">
+                  <progressbar [value]="30" type="warning"></progressbar>
+                </span>
+              </p>
+              
+              <p>
+                Premium <span>20</span>
+                <span class="d-block float-none">
+                  <progressbar [value]="20" type="danger"></progressbar>
+                </span>
+              </p>
+              
+              <p>
+                Non-Premium <span>250</span>
+                <span class="d-block float-none">
+                  <progressbar [value]="75"></progressbar>
+                </span>
+              </p>
+              
+              <p>
+                Night Cab <span>150</span>
+                <span class="d-block float-none">
+                  <progressbar [value]="25" type="success"></progressbar>
+                </span>
+              </p>              
+            </div>
+  
+          </div>
+        </a>
+
+      </li>
+      <li class="executed commonextendclass" [ngClass]="executedshowVar ? 'active' : ''" (click)="onexecutedliClick()">
+        <a href="javascript:void('0')" *ngIf="isExecuted">
+          <span class="commonsmall-text">Executed</span>  
+          <p class="executedText">200</p>      
+          <div class="common-graph-position">
+            <p-chart type="doughnut" width="60" height="60" [data]="executedData"  [options]="executedDataOptions"></p-chart>
+          </div>
+        </a>
+
+        <a href="javascript:void('0')" *ngIf="isExecutedOne">
+          <div class="newInnerDivtwo">
+            <div class="graphposition-second">
+              <p-chart type="doughnut" width="81" height="81" [data]="newDataOne"  [options]="newDataOptionsOne"></p-chart>
+              <p class="insideGraphText">
+                New
+                <span>450</span>
+              </p>
+            </div>   
+            
+            <div class="details-display">
+              <p>
+                Luxury <span>30</span>
+                <span class="d-block float-none">
+                  <progressbar [value]="30" type="warning"></progressbar>
+                </span>
+              </p>
+              
+              <p>
+                Premium <span>20</span>
+                <span class="d-block float-none">
+                  <progressbar [value]="20" type="danger"></progressbar>
+                </span>
+              </p>
+              
+              <p>
+                Non-Premium <span>250</span>
+                <span class="d-block float-none">
+                  <progressbar [value]="75"></progressbar>
+                </span>
+              </p>
+              
+              <p>
+                Night Cab <span>150</span>
+                <span class="d-block float-none">
+                  <progressbar [value]="25" type="success"></progressbar>
+                </span>
+              </p>              
+            </div>
+  
+          </div>
+        </a>
+      </li>
+      <li class="cancelled commonextendclass" [ngClass]="cancelledshowVar ? 'active' : ''" (click)="oncancelledliClick()">
+        <a href="javascript:void('0')" *ngIf="isCancelled">
+          <span class="commonsmall-text">Cancelled</span>   
+          <p class="cancelledText">50</p>     
+          <div class="common-graph-position">
+            <p-chart type="doughnut" width="60" height="60" [data]="cancelledData"  [options]="cancelledDataOptions"></p-chart>
+          </div>
+        </a>
+
+        <a href="javascript:void('0')" *ngIf="isCancelledOne">
+          <div class="newInnerDivtwo">
+            <div class="graphposition-second">
+              <p-chart type="doughnut" width="81" height="81" [data]="newDataOne"  [options]="newDataOptionsOne"></p-chart>
+              <p class="insideGraphText">
+                New
+                <span>450</span>
+              </p>
+            </div>   
+            
+            <div class="details-display">
+              <p>
+                Luxury <span>30</span>
+                <span class="d-block float-none">
+                  <progressbar [value]="30" type="warning"></progressbar>
+                </span>
+              </p>
+              
+              <p>
+                Premium <span>20</span>
+                <span class="d-block float-none">
+                  <progressbar [value]="20" type="danger"></progressbar>
+                </span>
+              </p>
+              
+              <p>
+                Non-Premium <span>250</span>
+                <span class="d-block float-none">
+                  <progressbar [value]="75"></progressbar>
+                </span>
+              </p>
+              
+              <p>
+                Night Cab <span>150</span>
+                <span class="d-block float-none">
+                  <progressbar [value]="25" type="success"></progressbar>
+                </span>
+              </p>              
+            </div>
+  
+          </div>
+        </a>
+      </li>
+    </div>
+
+
+    <!-- graph section ends here -->
+
+  </div>
+</div>
+
+

@@ -1,0 +1,31 @@
+<section class="header-cab-request">
+  <div class="row mx-0">
+    <div class="form-row w-100">
+      <div class="form-group cstmField col-md-3">
+        <label>Transport Desk </label>
+        <p-dropdown [options]="Country" [(ngModel)]="selectedCountry1" placeholder="Select" optionLabel="name"></p-dropdown> 
+      </div>
+
+      <div class="form-group cstmField col-md-2">
+        <label>Cab Type </label>
+        <p-dropdown [options]="CabType" [(ngModel)]="selectedCabType" placeholder="Select" optionLabel="name"></p-dropdown> 
+      </div>
+      <div class="form-group cstmField col-md-2">
+        <label>Request Duration </label>
+        <p-calendar [numberOfMonths]="2" selectionMode="range" placeholder="DD-MM-YY - DD-MM-YY" icon="app-Calendar" [showIcon]="true" [readonlyInput]="true" dateFormat="dd-M-y"></p-calendar> 
+      </div>
+      <div class="form-group cstmField iconClassCustom col-md-2">
+        <label>Time</label>
+        <p-calendar [(ngModel)]="date8" [timeOnly]="true" inputId="timeonly" placeholder="Select" hourFormat="12"></p-calendar>
+        <span class="app-time iconpositioncustom"></span>
+        <!-- <p-dropdown [options]="timeRange" [(ngModel)]="selectedtimeRange" placeholder="Select" optionLabel="name"></p-dropdown> -->
+      </div>
+
+      <div class="form-group cstmField col-md-3 padright-0">
+        <label>Employee Code </label>
+        <p-dropdown [options]="Country" [(ngModel)]="selectedCountry" placeholder="Select" optionLabel="name"></p-dropdown> 
+      </div>
+
+    </div>
+  </div>
+</section>

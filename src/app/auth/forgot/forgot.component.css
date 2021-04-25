@@ -1,0 +1,5 @@
+.themeLink, .themeLink:hover, .themeLink:active{ color:#818181 !important; text-decoration:none}
+.ttU{ text-transform:uppercase}
+
+@media (max-width:1024px) { .form-group{ width:420px; margin-right:auto; margin-left:auto} }
+@media (max-width:420px) { .form-group{ width:100%} }

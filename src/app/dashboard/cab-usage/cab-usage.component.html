@@ -1,0 +1,34 @@
+<section class="cab-usage-section">
+  <div class="container">
+    <h3>Cab Usage</h3>
+
+    <div class="cabusage-mainsec">
+      <div class="row mx-0">
+        <div class="col-md-3 p-0">
+          <div class="requesttype-graphsec">
+            <h3>Request Type</h3>
+            <div class="graphsection">
+              <p-chart type="doughnut" width="200" height="200" [data]="requestTypeData"  [options]="requestTypeDataOptions"></p-chart>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 p-0">
+          <div class="requesttype-graphsec padding-left20">
+            <h3>Trip Type</h3>
+            <div class="graphsection">
+              <p-chart type="doughnut" width="200" height="200" [data]="tripTypeData"  [options]="tripTypeDataOptions"></p-chart>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 p-0">
+          <div class="requesttype-graphsec padding-left20 border-right-0">
+            <h3>Cab Type</h3>
+            <div class="graphsection">
+              <p-chart type="bar" [data]="stackedBarChart" height="200px" [options]="stackedBarChartOptions"></p-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

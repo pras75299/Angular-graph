@@ -1,0 +1,130 @@
+/* HEADER */ 
+.header{background:#1ec00b;font-size:14px;margin:0;padding:0;position:fixed;top:0;width:100%;z-index:99}
+.header a{color:#fff;text-decoration:none;padding:13px 15px;height:100%;cursor:pointer;display:inline-block;vertical-align:top;transition:all ease-in 0.2s} 
+.main-menu a span{display:block;margin-top:7px}
+.appMenu{font-size:1.2rem;position:relative;border-right:1px solid rgba(255,255,255,.3)}
+.appMenu:hover{background:#fff;color:#1ec00b!important} 
+.appTitle{line-height:28px;font-size:19px}
+.header a:focus, .header a:active{color:#fff} 
+
+.dropdown-menu{min-width:300px;border-radius:0 0 5px 5px;float:none;font-size:14px;box-shadow:0 6px 12px rgba(0,0,0,.175);border:0;margin:0;padding:0;position:absolute}
+.dropdown-menu ul{margin:0;padding:0} 
+
+.animatedN{-webkit-animation-duration:0.5s;animation-duration:0.5s;-webkit-animation-fill-mode:both;animation-fill-mode:both} 
+@-webkit-keyframes fadeInNav{
+from{opacity:0;-webkit-transform:translateY(10px);
+transform:translateY(10px)}to{opacity:1;-webkit-transform:none;transform:none}}
+@keyframes fadeInNav{from{opacity:0;-webkit-transform:translateY(10px);transform:translateY(10px)}to{opacity:1;-webkit-transform:none;transform:none}}
+.fadeInNav{-webkit-animation-name:fadeInNav;animation-name:fadeInNav}
+
+.p-colLeft{flex-grow:2;flex-basis:0}
+.arrow-down{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid #fff;vertical-align:middle;display:inline-block}
+
+/*----  App Nav ----*/ 
+.main-menu{position:relative;display:inline-block;vertical-align:middle;height:100%}
+.main-menu .dropdown-menu{  padding:15px!important;font-size:14px;background:#fff}
+.main-menu  .dropdown-menu ul{margin:0;padding:0}
+.main-menu .dropdown-menu li{list-style:none;border-bottom:1px solid #f6f6f6}
+.main-menu .dropdown-menu li a{color:#525252;padding:10px 0 !important;display:inline-block;width:100%;text-decoration:none}
+.main-menu .dropdown-menu li a:hover{text-decoration:none;background:#fafafa}
+.main-menu .dropdown-menu i{font-size:1.4rem;color:#636363;padding-right:15px;vertical-align:middle}
+.main-menu .dropdown-menu li:first-child a:hover{background:#055b9c} 
+.main-menu .dropdown-menu li:first-child a{background:#0066b3;border-radius:2px;padding-top:3px !important;color:#fff !important;font-size:1.5rem}
+.main-menu .dropdown-menu li:first-child a i{font-size:2.5rem;color:#fff;vertical-align:sub}
+
+.main-menu .dropdown-menu a span{display:inline-block;width:84%;vertical-align:middle}
+
+/* rightMenu */
+.rightMenu{padding-bottom:0;padding-right:0;text-align:right} 
+.rightMenu a i{font-size:1.3rem;line-height:28px} 
+
+/*----  Feedback Nav ----*/ 
+.feedback:hover{background:#fff}
+.feedback:hover i{color:#1ec00b}
+.rating{background:#f2f2f2;padding:7px 0}
+::ng-deep .rating .bs-rating-star{color:#1ec00b;font-size:25px;outline:0}
+.rating h2{font-size:1.5rem;text-align:right;margin:0;padding:0;line-height:26px} 
+.textarea{border:0;width:100%;height:80px;resize:none;outline:0;margin:10px 0;font-size:14px;border-bottom:1px solid #d9d9d9}
+::ng-deep  .mat-dialog-container{padding:0!important}
+.ratingN{display:inline-block;margin-top:-5px}
+::ng-deep .ratingN span:focus{outline:0}
+::ng-deep .sr-only{position:absolute;width:1px;height:1px;clip:rect(0px, 0px, 0px, 0px);white-space:nowrap;
+clip-path:inset(50%);padding:0px;overflow:hidden;border-width:0px;border-style:initial;
+border-color:initial;border-image:initial}
+
+
+
+/*----  Menu Nav ----*/ 
+::ng-deep .menuLink{border-radius:0 0 4px 4px;padding:0;border:0;left:inherit;right:0;margin:0;box-shadow:0 6px 12px rgba(0,0,0,.175)}
+::ng-deep .menuOuter{display:table;width:100%;padding:15px}
+::ng-deep .menuBox{padding:0 15px;min-width:178px;display:table-cell}
+/* ::ng-deep .menuBox:first-child{} */
+::ng-deep .menuBox h2{color:#1ec00b;font-size:16px;border-bottom:1px solid;padding-bottom:10px;margin:0}
+::ng-deep .menuBox ul li{list-style:none;position:relative;border:0!important}
+::ng-deep .menuBox ul li:last-child a{border-bottom:0}
+::ng-deep .menuBox ul li a{display:block!important;border-bottom:1px solid #d9d9d9;;padding:10px 0!important;transition:ease-in-out .3s;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+::ng-deep .menuBox ul li a:hover, .menuBox ul li a:focus{color:#1ec00b!important;text-decoration:none;background:none!important}
+::ng-deep .menuBox ul li a::after{position:absolute;left:0;width:100%;height:1px;background:#1ec00b;content:'';opacity:0;transition:opacity 0.3s, transform .3s;transform:translateY(-10px);bottom:0px}
+::ng-deep .menuBox ul li a:hover::after, .menuBox ul li a:focus::after{opacity:1;transform:translateY(0px)}
+
+/*----  Notification Nav ----*/ 
+.notiMenu{position:relative;display:inline-block;vertical-align:middle;height:100%}
+.notiMenu .dropdown-menu{padding:0;margin:0}
+.notiMenu .dropdown-menu a{color:#222;padding:12px}
+.notiMenu .dropdown-menu a:hover{background:rgba(33, 150, 243, 0.08)}
+.notiMenu li{border-bottom:1px solid #ddd}
+.notiMenu h4{font-size:12px;font-weight:bold;position:relative;margin:0 0 5px;padding:0}
+.notiMenu p{font-size:11px;line-height:16px;margin:0}
+.notiMenu .arrow-right{font-size:12px!important;position:absolute;right:0;transform-origin:11px 11px}  
+.counter{top:12px;right:10px;background:#FF0000;font-size:11px;border-radius:50%;line-height:14px;position:absolute;color:#fff;width:15px;height:15px;text-align:center}
+
+/*----  Profile Nav ----*/ 
+.profileMenu{position:relative;display:inline-block;vertical-align:middle;height:100%}
+/* .profileMenu > a{margin-top:-4px}*/
+.profileMenu .dropdown-menu{padding:0;margin:0} 
+.profileMenu i{font-size:14px!important;line-height:14px! important}
+.userNoti{position:relative}
+.userNoti:hover{background:#fff}.userNoti:hover i{color:#1ec00b}
+.userInfo{border-left:1px solid rgba(255,255,255,.3);display:inline-block!important;padding:0 15px!important;height:100%}
+.userInfo:hover{color:#1ec00b!important;background:#fff}
+.userInfo:hover .arrow-down{border-top-color:#1ec00b}
+.u_name{max-width:150px;text-transform:capitalize;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;vertical-align:middle}
+.u_name, .u_ID{position:relative;top:7px}
+.u_role{margin:0;font-size:12px;line-height:11px;text-align:right;position:relative;top:10px}
+.userBlock{padding:15px;border-bottom:1px solid #d9d9d9;display:flex;flex-direction:column;text-align:center}
+.userImg{position:relative;margin-bottom:15px}
+.userImg > img{width:85px;height:85px;border-radius:50%;border:3px solid #f2f2f2}
+.userImg a.iconCamera{position:absolute;top:70%;right:35%;cursor:pointer;margin:0;background:#6e6e6e;padding:6px;border-radius:50%;width:25px;height:25px;display:flex}
+.userImg a::after{display:none}
+.userBlock h2{text-transform:capitalize;font-size:16px;color:#444444;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.userBlock p{font-size:.9rem;color:#999;margin:0}
+.noRole{border:none}.userRole{display:flex;flex-direction:column}
+.userRole h2{font-size:.9rem;color:#999999;padding:15px;margin:0}
+.userRole ul{max-height:200px;overflow:hidden;overflow-y:auto;margin-bottom:5px;display:flex;flex-direction:column}
+.userRole ul li{list-style:none;border-left:2px solid transparent}
+.userRole ul li.active{border-left:2px solid #1ec00b !important}
+.userRole ul li a{color:#444444;padding:5px 15px;margin:0;font-size:1rem;text-decoration:none;transition:.3s;border-left:2px solid transparent;display:flex}
+.userRole ul li.active a{color:#1ec00b}
+.userRole ul li a::after{display:none}
+.userLogout{display:flex;background:#1ec00b;border-bottom-left-radius:5px;justify-content:center}
+.userLogout button{background:#1ec00b;border:0 ;color:#fff;cursor:pointer;font-size:1rem;padding:10px 0;margin:0}
+
+.dropdown-menu.customNotificationWidth{
+    min-width: 425px;
+}
+.dropdown-menu.customNotificationWidth li a{
+    display: block;
+    padding: 16px;
+}
+.dropdown-menu.customNotificationWidth li p.notboldTextP{
+    font-weight: 400;
+    color: #777;
+    font-size: 13px;
+    padding-bottom: 8px;
+}
+
+.dropdown-menu.customNotificationWidth li p.boldTextP{
+    font-weight: 500;
+    color: #222;
+    font-size: 14px;
+}
