@@ -28,9 +28,6 @@ transform:translateY(10px)}to{opacity:1;-webkit-transform:none;transform:none}}
 .main-menu .dropdown-menu li a{color:#525252;padding:10px 0 !important;display:inline-block;width:100%;text-decoration:none}
 .main-menu .dropdown-menu li a:hover{text-decoration:none;background:#fafafa}
 .main-menu .dropdown-menu i{font-size:1.4rem;color:#636363;padding-right:15px;vertical-align:middle}
-.main-menu .dropdown-menu li:first-child a:hover{background:#055b9c} 
-.main-menu .dropdown-menu li:first-child a{background:#0066b3;border-radius:2px;padding-top:3px !important;color:#fff !important;font-size:1.5rem}
-.main-menu .dropdown-menu li:first-child a i{font-size:2.5rem;color:#fff;vertical-align:sub}
 
 .main-menu .dropdown-menu a span{display:inline-block;width:84%;vertical-align:middle}
 
