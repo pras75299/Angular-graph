@@ -386,7 +386,9 @@ input.cstmChekBox[type='radio']:checked:after{content:'';background:rgb(33,150,2
 
 /* Modal header */
 body .ui-dialog .ui-dialog-titlebar{font-size: 16px;color: #1ec00b;background: #fff;border: 0;padding-bottom: 0;}
-body .ui-dialog .ui-dialog-content{padding:16px;border: 0;border-radius: 0 0 3px 3px; overflow: inherit;}
+body .ui-dialog .ui-dialog-content{padding:16px;border: 0;border-radius: 0 0 3px 3px; overflow: inherit;
+  max-height: 400px;
+  overflow-y: scroll;}
 /* Modal Header End */
 
 /* Success Msg Start */
@@ -1295,10 +1297,10 @@ ul.radioSwitch{
 
 
 ul.radioSwitch.requestType li{
-  min-width: 185px;
+  min-width: 182px;
 }
 ul.radioSwitch.radioCabType li{
-  min-width: 123px !important;
+  min-width: 120px !important;
 }
 
 ul.radioSwitch.radioCabType li:last-child{
