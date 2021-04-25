@@ -836,7 +836,7 @@ span.float-right span i.app-Arrow{
     position: absolute;
     left: -23px;
     top: -1px;
-    display: none;
+    display: none !important;
 }
 
 .leftsidetextsection .flagS span{
@@ -846,6 +846,7 @@ span.float-right span i.app-Arrow{
     font-size: 11px;
     color: #fff;
     font-weight: 500;
+    display:none !important
 }
 
 .leftsidetextsection ul{

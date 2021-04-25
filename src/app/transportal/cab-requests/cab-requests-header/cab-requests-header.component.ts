@@ -83,7 +83,7 @@ export class CabRequestsHeaderComponent implements OnInit {
       loop: false
     };
     this.cities = [
-      {name: 'Noida SEZ-Tower2-U1-All Floors', code: 'NY'},
+      {name: 'E - 22/3, XYZ Building', code: 'NY'},
       {name: 'Option 2', code: 'RM'},
       {name: 'Option 3', code: 'LDN'},
       {name: 'Option 4', code: 'IST'},
@@ -91,7 +91,7 @@ export class CabRequestsHeaderComponent implements OnInit {
     ];
     this.Country = [
       {name: 'Select', code: ''},
-      {name: 'Noida SEZ-Tower2-U1-All Floors', code: ''},
+      {name: 'E - 22/3, XYZ Building', code: ''},
       {name: 'Option 2', code: ''}
     ];
 
