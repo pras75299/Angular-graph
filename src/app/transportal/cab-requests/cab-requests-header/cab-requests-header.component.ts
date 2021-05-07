@@ -143,52 +143,52 @@ export class CabRequestsHeaderComponent implements OnInit {
   }
   employees: any[] = [
     {
-      "name": "Saket Kumar",
-      "employeeId": "51448564",
-      "employeePosition": "Project Manager",
+      "name": "Manju Devi",
+      "employeeId": "Q14E8564",
+      "employeePosition": "Project Group Manager",
       "employeeBand": "E3",
-      "employeedu": "HCLISD US DEL- NORAM2B-NORAM 2B-B1",
-      "employeeloc": "Noida"
+      "employeedu": "Silokhera, Sector 15 Part 2, Sector 15, Gurugram",
+      "employeeloc": "Kanpur"
     },
     {
-      "name": "Amarnath Kumar",
+      "name": "Manish Kumar",
       "employeeId": "53448564",
-      "employeePosition": "Project Manager",
+      "employeePosition": "Project Group Manager",
       "employeeBand": "E3",
-      "employeedu": "HCLISD US DEL- NORAM2B-NORAM 2B-B1",
-      "employeeloc": "Noida"
+      "employeedu": "Silokhera, Sector 15 Part 2, Sector 15, Gurugram",
+      "employeeloc": "Kanpur"
     },
     {
-      "name": "Sanjeev Goel",
+      "name": "Nitin Singh",
       "employeeId": "54448564",
-      "employeePosition": "Project Manager",
+      "employeePosition": "Project Group Manager",
       "employeeBand": "E3",
-      "employeedu": "HCLISD US DEL- NORAM2B-NORAM 2B-B1",
-      "employeeloc": "Noida"
+      "employeedu": "Silokhera, Sector 15 Part 2, Sector 15, Gurugram",
+      "employeeloc": "Kanpur"
     },
     {
-      "name": "Supriya Kumari",
-      "employeeId": "51448564",
-      "employeePosition": "Project Manager",
+      "name": "Suman Kumari",
+      "employeeId": "Q14E8564",
+      "employeePosition": "Project Group Manager",
       "employeeBand": "E3",
-      "employeedu": "HCLISD US DEL- NORAM2B-NORAM 2B-B1",
-      "employeeloc": "Noida"
+      "employeedu": "Silokhera, Sector 15 Part 2, Sector 15, Gurugram",
+      "employeeloc": "Kanpur"
     },
     {
-      "name": "Deepak Gupta",
-      "employeeId": "51448564",
-      "employeePosition": "Project Manager",
+      "name": "Deepak G",
+      "employeeId": "Q14E8564",
+      "employeePosition": "Project Group Manager",
       "employeeBand": "E3",
-      "employeedu": "HCLISD US DEL- NORAM2B-NORAM 2B-B1",
-      "employeeloc": "Noida"
+      "employeedu": "Silokhera, Sector 15 Part 2, Sector 15, Gurugram",
+      "employeeloc": "Kanpur"
     },
     {
-      "name": "Anupama Gupta",
-      "employeeId": "51448564",
-      "employeePosition": "Project Manager",
+      "name": "Anu Chauhan",
+      "employeeId": "Q14E8564",
+      "employeePosition": "Project Group Manager",
       "employeeBand": "E3",
-      "employeedu": "HCLISD US DEL- NORAM2B-NORAM 2B-B1",
-      "employeeloc": "Noida"
+      "employeedu": "Silokhera, Sector 15 Part 2, Sector 15, Gurugram",
+      "employeeloc": "Kanpur"
     }
   ];
   filteredBrandsNew: any[];

@@ -507,8 +507,8 @@ export class CabRequestsComponent implements OnInit {
       {name: 'Option 2', code: ''}
     ]
     this.addedLocation=[
-      {location:'Sez, Noida, Sector-126, NOIDA'},
-      {location:'A- 8 & 9, Maharaja Agrasen Marg, Block- A, Sector-60, NOIDA'},
+      {location:'Sez, Kanpur, Sector-126, Kanpur'},
+      {location:'A- 8 & 9, Maharaja Agrasen Marg, Block- A, Sector-60, Kanpur'},
     ]
     this.DropupCity = [
       {name: 'Select', code: ''},
@@ -591,15 +591,15 @@ export class CabRequestsComponent implements OnInit {
     ];
 
     this.addedCopassanger=[
-      {empname:'Saket Kumar',sapid:'40180335'},
+      {empname:'Manju Devi',sapid:'40180335'},
     ]
     this.passangerList =[
-      {empname:'Saket Kumar',sapid:'40180335',designation:'SENIOR TECHNICAL LEAD',band:'E4',department:'BTIS - BTIS - EIS - DU1, NOIDA'},
-      {empname:'Rohit Sharma',sapid:'51556185',designation:'LEAD CONSULTANT',band:'E3',department:'BTIS - BTIS - EIS - DU1, NOIDA'},
-      {empname:'Ankita Tiwari',sapid:'51687772',designation:'VISUAL DESIGNER',band:'E1',department:'BTIS - BTIS - EIS - DU1, NOIDA'},
-      {empname:'Saket Kumar',sapid:'40180335',designation:'SENIOR TECHNICAL LEAD',band:'E4',department:'BTIS - BTIS - EIS - DU1, NOIDA'},
-      {empname:'Rohit Sharma',sapid:'51556185',designation:'LEAD CONSULTANT',band:'E3',department:'BTIS - BTIS - EIS - DU1, NOIDA'},
-      {empname:'Ankita Tiwari',sapid:'51687772',designation:'VISUAL DESIGNER',band:'E1',department:'BTIS - BTIS - EIS - DU1, NOIDA'},
+      {empname:'Manju Devi',sapid:'40180335',designation:'SENIOR TECHNICAL LEAD',band:'E4',department:'BTIS - BTIS - EIS - DU1, Kanpur'},
+      {empname:'Rohit Sharma',sapid:'51556185',designation:'LEAD CONSULTANT',band:'E3',department:'BTIS - BTIS - EIS - DU1, Kanpur'},
+      {empname:'Ankita Tiwari',sapid:'51687772',designation:'VISUAL DESIGNER',band:'E1',department:'BTIS - BTIS - EIS - DU1, Kanpur'},
+      {empname:'Manju Devi',sapid:'40180335',designation:'SENIOR TECHNICAL LEAD',band:'E4',department:'BTIS - BTIS - EIS - DU1, Kanpur'},
+      {empname:'Rohit Sharma',sapid:'51556185',designation:'LEAD CONSULTANT',band:'E3',department:'BTIS - BTIS - EIS - DU1, Kanpur'},
+      {empname:'Ankita Tiwari',sapid:'51687772',designation:'VISUAL DESIGNER',band:'E1',department:'BTIS - BTIS - EIS - DU1, Kanpur'},
     ]
 
   }
@@ -891,52 +891,52 @@ export class CabRequestsComponent implements OnInit {
 
   employees: any[] = [
     {
-      "name": "Saket Kumar",
-      "employeeId": "51448564",
-      "employeePosition": "Project Manager",
+      "name": "Manju Devi",
+      "employeeId": "Q14E8564",
+      "employeePosition": "Project Group Manager",
       "employeeBand": "E3",
-      "employeedu": "HCLISD US DEL- NORAM2B-NORAM 2B-B1",
-      "employeeloc": "Noida"
+      "employeedu": "Silokhera, Sector 15 Part 2, Sector 15, Gurugram",
+      "employeeloc": "Kanpur"
     },
     {
-      "name": "Amarnath Kumar",
+      "name": "Manish Kumar",
       "employeeId": "53448564",
-      "employeePosition": "Project Manager",
+      "employeePosition": "Project Group Manager",
       "employeeBand": "E3",
-      "employeedu": "HCLISD US DEL- NORAM2B-NORAM 2B-B1",
-      "employeeloc": "Noida"
+      "employeedu": "Silokhera, Sector 15 Part 2, Sector 15, Gurugram",
+      "employeeloc": "Kanpur"
     },
     {
-      "name": "Sanjeev Goel",
+      "name": "Nitin Singh",
       "employeeId": "54448564",
-      "employeePosition": "Project Manager",
+      "employeePosition": "Project Group Manager",
       "employeeBand": "E3",
-      "employeedu": "HCLISD US DEL- NORAM2B-NORAM 2B-B1",
-      "employeeloc": "Noida"
+      "employeedu": "Silokhera, Sector 15 Part 2, Sector 15, Gurugram",
+      "employeeloc": "Kanpur"
     },
     {
-      "name": "Supriya Kumari",
-      "employeeId": "51448564",
-      "employeePosition": "Project Manager",
+      "name": "Suman Kumari",
+      "employeeId": "Q14E8564",
+      "employeePosition": "Project Group Manager",
       "employeeBand": "E3",
-      "employeedu": "HCLISD US DEL- NORAM2B-NORAM 2B-B1",
-      "employeeloc": "Noida"
+      "employeedu": "Silokhera, Sector 15 Part 2, Sector 15, Gurugram",
+      "employeeloc": "Kanpur"
     },
     {
-      "name": "Deepak Gupta",
-      "employeeId": "51448564",
-      "employeePosition": "Project Manager",
+      "name": "Deepak G",
+      "employeeId": "Q14E8564",
+      "employeePosition": "Project Group Manager",
       "employeeBand": "E3",
-      "employeedu": "HCLISD US DEL- NORAM2B-NORAM 2B-B1",
-      "employeeloc": "Noida"
+      "employeedu": "Silokhera, Sector 15 Part 2, Sector 15, Gurugram",
+      "employeeloc": "Kanpur"
     },
     {
-      "name": "Anupama Gupta",
-      "employeeId": "51448564",
-      "employeePosition": "Project Manager",
+      "name": "Anu Chauhan",
+      "employeeId": "Q14E8564",
+      "employeePosition": "Project Group Manager",
       "employeeBand": "E3",
-      "employeedu": "HCLISD US DEL- NORAM2B-NORAM 2B-B1",
-      "employeeloc": "Noida"
+      "employeedu": "Silokhera, Sector 15 Part 2, Sector 15, Gurugram",
+      "employeeloc": "Kanpur"
     }
   ];
   filteredBrandsNew: any[];
@@ -1004,20 +1004,20 @@ export class CabRequestsComponent implements OnInit {
     document.body.innerHTML = originalContents;
   }
 
-  private coPassanger: any = {empname:'Saket Kumar',sapid:'40180335'};
+  private coPassanger: any = {empname:'Manju Devi',sapid:'40180335'};
   addCopassanger() {
       this.addedCopassanger.push(this.coPassanger)
-      this.coPassanger = {empname:'Saket Kumar',sapid:'40180335'};
+      this.coPassanger = {empname:'Manju Devi',sapid:'40180335'};
   }
 
   removeCopassanger(index) {
     this.addedCopassanger.splice(index, 1);
   }
 
-  private newLocation: any = {location:'Sez, Noida, Sector-126, NOIDA'};
+  private newLocation: any = {location:'Sez, Kanpur, Sector-126, Kanpur'};
   addnLocation() {
       this.addedLocation.push(this.newLocation)
-      this.newLocation ={location:'Sez, Noida, Sector-126, NOIDA'};
+      this.newLocation ={location:'Sez, Kanpur, Sector-126, Kanpur'};
   }
 
   removeLocation(index) {
